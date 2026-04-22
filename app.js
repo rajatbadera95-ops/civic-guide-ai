@@ -4,18 +4,12 @@
 
 /* =============== NAVIGATION =============== */
 function navigate(page) {
-    // Hide all pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    // Remove active from all nav links
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    // Show target page
     document.getElementById('page-' + page).classList.add('active');
-    // Highlight active nav link
     const link = document.getElementById('nav-' + page);
     if (link) link.classList.add('active');
-    // Close mobile menu
     document.getElementById('nav-links').classList.remove('open');
-    // Scroll to top
     window.scrollTo(0, 0);
 }
 
@@ -23,10 +17,48 @@ function toggleMobileNav() {
     document.getElementById('nav-links').classList.toggle('open');
 }
 
-// Navbar scroll shadow
 window.addEventListener('scroll', () => {
     document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 10);
 });
+
+/* =============== THEME TOGGLE =============== */
+let isDayTheme = false;
+
+function toggleTheme() {
+    isDayTheme = !isDayTheme;
+    document.body.classList.toggle('day-theme', isDayTheme);
+    const icon = document.getElementById('theme-icon');
+    icon.className = isDayTheme ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+    localStorage.setItem('civicTheme', isDayTheme ? 'day' : 'night');
+}
+
+// Restore saved theme
+(function() {
+    if (localStorage.getItem('civicTheme') === 'day') {
+        isDayTheme = true;
+        document.body.classList.add('day-theme');
+        const icon = document.getElementById('theme-icon');
+        if (icon) icon.className = 'bi bi-sun-fill';
+    }
+})();
+
+/* =============== VOTER ID WIDGET =============== */
+function voterIdAnswer(hasId) {
+    document.getElementById('vid-question').classList.add('d-none');
+    if (hasId) {
+        document.getElementById('vid-yes').classList.remove('d-none');
+    } else {
+        document.getElementById('vid-no').classList.remove('d-none');
+    }
+}
+
+function voterIdReset() {
+    document.getElementById('vid-question').classList.remove('d-none');
+    document.getElementById('vid-yes').classList.add('d-none');
+    document.getElementById('vid-no').classList.add('d-none');
+}
+
+
 
 /* =============== COUNTDOWN TIMER =============== */
 const targetDate = new Date('2026-11-05T00:00:00');
