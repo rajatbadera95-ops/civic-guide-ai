@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Education Assistant</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center bg-dark-theme overlay-bg">
+        
+        <!-- Header outside the chat window -->
+        <div class="text-center mb-4">
+            <h1 class="fw-bold neon-text title-glow">Civic Guide AI</h1>
+            <p class="text-muted mb-0">Your objective & neutral election education assistant.</p>
+        </div>
+
+        <div class="chat-container glassmorphism d-flex flex-column shadow-lg">
+            
+            <!-- Chat Header -->
+            <div class="chat-header d-flex align-items-center p-3 border-bottom border-secondary border-opacity-25">
+                <div class="avatar me-3 position-relative">
+                    <i class="bi bi-robot fs-2 text-neon-cyan"></i>
+                    <span class="status-indicator position-absolute bg-success rounded-circle"></span>
+                </div>
+                <div>
+                    <h5 class="mb-0 fw-semibold text-white">Assistant</h5>
+                    <small class="text-success fw-bold">Online</small>
+                </div>
+            </div>
+
+            <!-- Chat History -->
+            <div class="chat-history flex-grow-1 p-3 overflow-auto" id="chat-history">
+                <!-- Introductory Message -->
+                <div class="message bot-message d-flex flex-column align-items-start mb-3">
+                    <div class="message-bubble py-2 px-3 rounded-4 shadow-sm text-white">
+                        Hello! I am your Election Education Assistant. I can help you with voter registration, explain complex election terms (like EVM or VVPAT), and guide you through the electoral process neutrally. How can I assist you today?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator (Hidden by default) -->
+            <div id="typing-indicator" class="typing-indicator p-3 d-none align-items-center gap-1">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input p-3 border-top border-secondary border-opacity-25">
+                <form id="chat-form" class="input-group">
+                    <input type="text" id="user-input" class="form-control glass-input rounded-start-pill py-2 px-4 shadow-none" placeholder="Ask about elections, voting, or registration..." autocomplete="off" required>
+                    <button class="btn btn-neon-cyan rounded-end-pill px-4" type="submit" id="send-btn">
+                        <i class="bi bi-send-fill fs-5"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <footer class="mt-4 text-center text-muted small">
+            Designed for strictly objective and educational purposes.
+        </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>

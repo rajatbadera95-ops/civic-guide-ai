@@ -1,0 +1,18 @@
+{
+  "registration": {
+    "form_link": "https://voters.eci.gov.in/ (Form 6)",
+    "requirements": "You need proof of age (like a Birth Certificate, PAN Card, or Aadhaar Card) and proof of residence (like a passport, driving license, or recent utility bill).",
+    "steps": [
+      "1. Visit the Voter's Service Portal.",
+      "2. Click on 'New Voter Registration' and select Form 6.",
+      "3. Fill in your personal details and upload the supporting documents.",
+      "4. Submit the form to get a reference ID for tracking."
+    ]
+  },
+  "jargon_dictionary": {
+    "EVM": "Electronic Voting Machine, a secure electronic device used to cast your vote.",
+    "VVPAT": "Voter Verifiable Paper Audit Trail, a machine attached to the EVM that prints a paper slip of your vote, allowing you to verify that it was recorded correctly.",
+    "Model Code of Conduct": "A set of guidelines issued by the Election Commission to regulate political parties and candidates prior to elections, ensuring free and fair polling.",
+    "NOTA": "None of the Above, an option that allows a voter to officially register a vote of rejection for all contesting candidates."
+  }
+}
