@@ -3,88 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civic Guide AI – Election Education Assistant</title>
-    <meta name="description" content="Your free, neutral, and objective AI-powered election education assistant for voter registration and civic rights.">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
+    <title>Civic Guide AI – Your Election Education Hub</title>
+    <meta name="description" content="India's free, neutral AI-powered election education platform. Learn about voter registration, election terms, polling booths, and your civic rights.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center bg-dark-theme overlay-bg py-4">
 
-        <!-- Header -->
-        <div class="text-center mb-3">
-            <h1 class="fw-bold neon-text title-glow">Civic Guide AI</h1>
-            <p class="text-muted mb-0">Your objective &amp; neutral election education assistant.</p>
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar-top" id="main-nav">
+    <div class="nav-inner">
+        <!-- Logo -->
+        <a class="nav-logo" onclick="navigate('home')">
+            <i class="bi bi-shield-check"></i>
+            <span>Civic Guide AI</span>
+        </a>
+
+        <!-- Nav Links -->
+        <div class="nav-links" id="nav-links">
+            <a class="nav-link active" id="nav-home"     onclick="navigate('home')">     <i class="bi bi-house-fill"></i>     <span>Info</span>     </a>
+            <a class="nav-link"        id="nav-chat"     onclick="navigate('chat')">     <i class="bi bi-robot"></i>          <span>Ask AI</span>   </a>
+            <a class="nav-link"        id="nav-locator"  onclick="navigate('locator')">  <i class="bi bi-geo-alt-fill"></i>   <span>Locator</span>  </a>
+            <a class="nav-link"        id="nav-glossary" onclick="navigate('glossary')"> <i class="bi bi-book-half"></i>      <span>Glossary</span> </a>
         </div>
 
-        <!-- Nav Tabs -->
-        <div class="app-tabs d-flex gap-2 mb-3">
-            <button class="tab-btn active" id="tab-chat" onclick="switchTab('chat')">
-                <i class="bi bi-chat-dots-fill me-1"></i> AI Assistant
-            </button>
-            <button class="tab-btn" id="tab-locator" onclick="switchTab('locator')">
-                <i class="bi bi-geo-alt-fill me-1"></i> Booth Locator
+        <!-- Right Controls -->
+        <div class="nav-right">
+            <!-- Countdown Pill -->
+            <div class="cd-pill">
+                <i class="bi bi-clock-fill"></i>
+                <span id="cd-days">--</span>d
+                <span id="cd-hours">--</span>h
+                <span id="cd-mins">--</span>m
+            </div>
+            <!-- Language -->
+            <select id="language-select" class="lang-select">
+                <option value="English">🇬🇧 EN</option>
+                <option value="Hindi">🇮🇳 HI</option>
+                <option value="Bengali">🇧🇩 BN</option>
+                <option value="Tamil">🌴 TA</option>
+                <option value="Telugu">🌺 TE</option>
+                <option value="Marathi">🟠 MR</option>
+            </select>
+            <!-- Mobile menu toggle -->
+            <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()">
+                <i class="bi bi-list"></i>
             </button>
         </div>
+    </div>
+</nav>
 
-        <!-- Countdown Timer Banner -->
-        <div class="countdown-banner glassmorphism mb-3 px-4 py-2 d-flex align-items-center gap-3">
-            <i class="bi bi-clock-history text-neon-cyan"></i>
-            <span class="text-white fw-semibold small">Next Election Day Countdown:</span>
-            <div class="d-flex gap-2">
-                <div class="countdown-unit">
-                    <span id="cd-days" class="countdown-val">--</span>
-                    <small>Days</small>
+<!-- ===================== PAGE: INFO / HOME ===================== -->
+<section class="page active" id="page-home">
+
+    <!-- Hero -->
+    <div class="hero-section">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content text-center">
+            <div class="hero-badge"><i class="bi bi-patch-check-fill me-1"></i>100% Neutral & Non-Partisan</div>
+            <h1 class="hero-title">Your Vote. <span class="text-neon">Your Power.</span></h1>
+            <p class="hero-subtitle">India's free AI-powered election education platform. Understand your rights, learn the process, and make an informed choice.</p>
+            <div class="hero-actions">
+                <button class="btn-hero-primary" onclick="navigate('chat')"><i class="bi bi-robot me-2"></i>Ask the AI</button>
+                <button class="btn-hero-secondary" onclick="navigate('locator')"><i class="bi bi-geo-alt me-2"></i>Find Polling Booth</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-section">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+            <div class="stat-number" data-target="970">0</div>
+            <div class="stat-suffix">Million+</div>
+            <div class="stat-label">Registered Voters (2024)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="bi bi-building-fill"></i></div>
+            <div class="stat-number" data-target="543">0</div>
+            <div class="stat-suffix">Seats</div>
+            <div class="stat-label">Lok Sabha Constituencies</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="bi bi-geo-fill"></i></div>
+            <div class="stat-number" data-target="1050">0</div>
+            <div class="stat-suffix">Million+</div>
+            <div class="stat-label">Polling Booths Nationwide</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="bi bi-percent"></i></div>
+            <div class="stat-number" data-target="66">0</div>
+            <div class="stat-suffix">%</div>
+            <div class="stat-label">Voter Turnout in 2024 General Election</div>
+        </div>
+    </div>
+
+    <!-- How to Vote Timeline -->
+    <div class="section-block">
+        <div class="section-header">
+            <h2 class="section-title">How to Vote <span class="text-neon">Step by Step</span></h2>
+            <p class="section-sub">Follow these 5 simple steps to exercise your democratic right</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item" style="--delay:0s">
+                <div class="timeline-num">1</div>
+                <div class="timeline-body">
+                    <h5>Check Your Eligibility</h5>
+                    <p>You must be a citizen of India, at least 18 years old, and ordinarily resident in the constituency where you want to vote.</p>
                 </div>
-                <span class="text-neon-cyan fw-bold">:</span>
-                <div class="countdown-unit">
-                    <span id="cd-hours" class="countdown-val">--</span>
-                    <small>Hrs</small>
+            </div>
+            <div class="timeline-item" style="--delay:0.1s">
+                <div class="timeline-num">2</div>
+                <div class="timeline-body">
+                    <h5>Register on the Electoral Roll</h5>
+                    <p>Fill <strong>Form 6</strong> online at <a href="https://voters.eci.gov.in" target="_blank" class="neon-link">voters.eci.gov.in</a> or visit your local BLO (Booth Level Officer). Provide Aadhaar, photo ID, and address proof.</p>
                 </div>
-                <span class="text-neon-cyan fw-bold">:</span>
-                <div class="countdown-unit">
-                    <span id="cd-mins" class="countdown-val">--</span>
-                    <small>Min</small>
+            </div>
+            <div class="timeline-item" style="--delay:0.2s">
+                <div class="timeline-num">3</div>
+                <div class="timeline-body">
+                    <h5>Receive Your EPIC Card</h5>
+                    <p>After verification, you'll receive your Electors' Photo Identity Card (EPIC / Voter ID). It typically takes 4–6 weeks. Download a digital copy from the portal.</p>
                 </div>
-                <span class="text-neon-cyan fw-bold">:</span>
-                <div class="countdown-unit">
-                    <span id="cd-secs" class="countdown-val">--</span>
-                    <small>Sec</small>
+            </div>
+            <div class="timeline-item" style="--delay:0.3s">
+                <div class="timeline-num">4</div>
+                <div class="timeline-body">
+                    <h5>Find Your Polling Booth</h5>
+                    <p>Use our <strong>Booth Locator</strong> tab or visit the ECI portal to find your assigned polling station. Note the date and timings (usually 7 AM – 6 PM).</p>
+                </div>
+            </div>
+            <div class="timeline-item" style="--delay:0.4s">
+                <div class="timeline-num">5</div>
+                <div class="timeline-body">
+                    <h5>Cast Your Vote</h5>
+                    <p>Carry a valid photo ID. The EVM (Electronic Voting Machine) will display candidates. Press the blue button next to your chosen candidate. VVPAT confirms your vote.</p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="panel-chat" class="chat-container glassmorphism d-flex flex-column shadow-lg">
+    <!-- Voter Rights Cards -->
+    <div class="section-block">
+        <div class="section-header">
+            <h2 class="section-title">Your <span class="text-neon">Voter Rights</span></h2>
+            <p class="section-sub">The Constitution of India guarantees these rights to every eligible voter</p>
+        </div>
+        <div class="rights-grid">
+            <div class="rights-card" style="--delay:0s">
+                <i class="bi bi-shield-lock-fill rights-icon"></i>
+                <h5>Secret Ballot</h5>
+                <p>Your vote is completely private. No one—including election officials—can see whom you voted for.</p>
+            </div>
+            <div class="rights-card" style="--delay:0.1s">
+                <i class="bi bi-clock rights-icon"></i>
+                <h5>Paid Leave to Vote</h5>
+                <p>Under the Representation of the People Act, your employer must grant you paid leave on election day.</p>
+            </div>
+            <div class="rights-card" style="--delay:0.2s">
+                <i class="bi bi-person-check-fill rights-icon"></i>
+                <h5>Challenge Your Entry</h5>
+                <p>If someone else tries to impersonate you at the booth, you have the right to challenge the officer and cast a <em>Tendered Vote</em>.</p>
+            </div>
+            <div class="rights-card" style="--delay:0.3s">
+                <i class="bi bi-x-circle-fill rights-icon"></i>
+                <h5>Right to NOTA</h5>
+                <p>"None of the Above" is a valid option on every EVM. If you are unsatisfied with all candidates, you can use NOTA without nullifying your vote.</p>
+            </div>
+            <div class="rights-card" style="--delay:0.4s">
+                <i class="bi bi-accessibility rights-icon"></i>
+                <h5>Accessibility Support</h5>
+                <p>Senior citizens (85+) and persons with disabilities can vote from home using <em>Postal Ballot</em> or get special assistance at the polling booth.</p>
+            </div>
+            <div class="rights-card" style="--delay:0.5s">
+                <i class="bi bi-eye-slash-fill rights-icon"></i>
+                <h5>Right to Know</h5>
+                <p>Under the SC ruling (2003), voters have the right to know the criminal records, assets, and educational qualifications of every candidate.</p>
+            </div>
+        </div>
+    </div>
 
-            <!-- Chat Header with Language Selector -->
-            <div class="chat-header d-flex align-items-center justify-content-between p-3 border-bottom border-secondary border-opacity-25">
-                <div class="d-flex align-items-center">
-                    <div class="avatar me-3 position-relative">
-                        <i class="bi bi-robot fs-2 text-neon-cyan"></i>
-                        <span class="status-indicator position-absolute bg-success rounded-circle"></span>
-                    </div>
-                    <div>
-                        <h5 class="mb-0 fw-semibold text-white">Assistant</h5>
-                        <small class="text-success fw-bold">Online</small>
-                    </div>
+    <!-- Key Dates -->
+    <div class="section-block">
+        <div class="section-header">
+            <h2 class="section-title">Key <span class="text-neon">Election Dates</span></h2>
+            <p class="section-sub">Stay ahead of the important civic calendar</p>
+        </div>
+        <div class="dates-grid">
+            <div class="date-card upcoming">
+                <div class="date-badge">Upcoming</div>
+                <div class="date-val">Nov 5, 2026</div>
+                <div class="date-name">Next U.S. Midterm Elections</div>
+            </div>
+            <div class="date-card">
+                <div class="date-val">Apr – May 2024</div>
+                <div class="date-name">18th Lok Sabha General Election</div>
+            </div>
+            <div class="date-card">
+                <div class="date-val">Oct – Nov 2024</div>
+                <div class="date-name">Maharashtra & Haryana State Elections</div>
+            </div>
+            <div class="date-card">
+                <div class="date-val">Jan 1 (Annual)</div>
+                <div class="date-name">Electoral Roll Summary Revision</div>
+            </div>
+            <div class="date-card">
+                <div class="date-val">Mar 1 (Annual)</div>
+                <div class="date-name">Deadline to Enroll as New Voter</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner">
+        <div class="cta-content">
+            <h3>Still have questions?</h3>
+            <p>Our AI assistant can explain any election term or process in plain language — in your own language!</p>
+            <button class="btn-hero-primary" onclick="navigate('chat')"><i class="bi bi-chat-dots-fill me-2"></i>Chat with AI Now</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>Civic Guide AI &copy; 2026 &nbsp;·&nbsp; Designed for strictly objective and educational purposes &nbsp;·&nbsp; Not affiliated with any political party or government body.</p>
+    </footer>
+</section>
+
+<!-- ===================== PAGE: ASK AI ===================== -->
+<section class="page" id="page-chat">
+    <div class="page-wrapper chat-page-wrapper">
+        <div class="chat-page-header text-center mb-4">
+            <h2 class="fw-bold text-white title-glow">Ask the <span class="text-neon">AI Assistant</span></h2>
+            <p class="text-muted">Ask anything about elections, voter registration, or civic rights. Get a neutral, factual answer.</p>
+        </div>
+
+        <div class="chat-container glassmorphism d-flex flex-column shadow-lg" id="panel-chat">
+
+            <!-- Chat Header -->
+            <div class="chat-header d-flex align-items-center p-3 border-bottom border-secondary border-opacity-25">
+                <div class="avatar me-3 position-relative">
+                    <i class="bi bi-robot fs-2 text-neon-cyan"></i>
+                    <span class="status-indicator position-absolute bg-success rounded-circle"></span>
                 </div>
-                <!-- Language Selector -->
-                <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-translate text-neon-cyan small"></i>
-                    <select id="language-select" class="lang-select form-select form-select-sm">
-                        <option value="English">🇬🇧 English</option>
-                        <option value="Hindi">🇮🇳 हिन्दी</option>
-                        <option value="Bengali">🇧🇩 বাংলা</option>
-                        <option value="Tamil">🌴 தமிழ்</option>
-                        <option value="Telugu">🌺 తెలుగు</option>
-                        <option value="Marathi">🟠 मराठी</option>
-                    </select>
+                <div>
+                    <h5 class="mb-0 fw-semibold text-white">CivicBot</h5>
+                    <small class="text-success fw-bold">Online · Neutral · Non-Partisan</small>
                 </div>
             </div>
 
@@ -92,25 +256,24 @@
             <div class="chat-history flex-grow-1 p-3 overflow-auto" id="chat-history">
                 <div class="message bot-message d-flex flex-column align-items-start mb-3">
                     <div class="message-bubble py-2 px-3 rounded-4 shadow-sm text-white">
-                        Hello! I am your Election Education Assistant. I can help you with voter registration, explain complex election terms (like EVM or VVPAT), and guide you through the electoral process neutrally. How can I assist you today?
+                        Hello! I am <strong>CivicBot</strong> — your neutral election education assistant. Ask me anything about voter registration, how EVMs work, election jargon, or your civic rights. I'll never take sides! 🗳️
                     </div>
                 </div>
             </div>
 
             <!-- Typing Indicator -->
             <div id="typing-indicator" class="typing-indicator p-3 d-none align-items-center gap-1">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div>
             </div>
 
-            <!-- Quick Ask Pills -->
+            <!-- Quick Asks -->
             <div class="quick-asks px-3 pb-2 d-flex gap-2 overflow-auto">
                 <button class="quick-pill" data-query="What is an EVM and how does it work?">⚡ What is EVM?</button>
                 <button class="quick-pill" data-query="How do I register to vote for the first time?">📋 Register to Vote</button>
                 <button class="quick-pill" data-query="Am I eligible to vote? Please ask me questions to determine my eligibility.">✅ Am I Eligible?</button>
                 <button class="quick-pill" data-query="What documents do I need to get a Voter ID card?">🪪 Voter ID Docs</button>
                 <button class="quick-pill" data-query="What is VVPAT and why is it important?">🖨️ What is VVPAT?</button>
+                <button class="quick-pill" data-query="What is NOTA and when should I use it?">❌ What is NOTA?</button>
                 <button class="quick-pill" data-query="What is Form 6 and how do I fill it out?">📄 Form 6 Guide</button>
             </div>
 
@@ -130,82 +293,84 @@
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- ===== POLLING BOOTH LOCATOR PANEL ===== -->
-        <div id="panel-locator" class="chat-container glassmorphism d-flex flex-column shadow-lg d-none">
+<!-- ===================== PAGE: BOOTH LOCATOR ===================== -->
+<section class="page" id="page-locator">
+    <div class="page-wrapper">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-white title-glow">Polling <span class="text-neon">Booth Locator</span></h2>
+            <p class="text-muted">Find your nearest polling station and official state election portal</p>
+        </div>
 
-            <!-- Locator Header -->
-            <div class="chat-header d-flex align-items-center p-3 border-bottom border-secondary border-opacity-25">
-                <i class="bi bi-geo-alt-fill fs-2 text-neon-cyan me-3"></i>
-                <div>
-                    <h5 class="mb-0 fw-semibold text-white">Polling Booth Locator</h5>
-                    <small class="text-muted">Find your nearest polling station</small>
-                </div>
-            </div>
-
+        <div class="chat-container glassmorphism d-flex flex-column shadow-lg" id="panel-locator">
             <!-- Search Area -->
-            <div class="p-3 border-bottom border-secondary border-opacity-25">
-                <div class="row g-2">
+            <div class="p-4 border-bottom border-secondary border-opacity-25">
+                <div class="row g-3">
                     <div class="col-12 col-sm-5">
+                        <label class="form-label text-muted small">Select Your State</label>
                         <select id="state-select" class="lang-select w-100 form-select">
-                            <option value="">-- Select Your State --</option>
-                            <option>Andhra Pradesh</option>
-                            <option>Assam</option>
-                            <option>Bihar</option>
-                            <option>Delhi</option>
-                            <option>Gujarat</option>
-                            <option>Karnataka</option>
-                            <option>Kerala</option>
-                            <option>Madhya Pradesh</option>
-                            <option>Maharashtra</option>
-                            <option>Punjab</option>
-                            <option>Rajasthan</option>
-                            <option>Tamil Nadu</option>
-                            <option>Telangana</option>
-                            <option>Uttar Pradesh</option>
-                            <option>West Bengal</option>
+                            <option value="">-- Select State --</option>
+                            <option>Andhra Pradesh</option><option>Assam</option><option>Bihar</option>
+                            <option>Delhi</option><option>Gujarat</option><option>Karnataka</option>
+                            <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+                            <option>Punjab</option><option>Rajasthan</option><option>Tamil Nadu</option>
+                            <option>Telangana</option><option>Uttar Pradesh</option><option>West Bengal</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-4">
-                        <input type="text" id="pin-input" class="form-control glass-input rounded" placeholder="Enter PIN Code" maxlength="6" pattern="[0-9]{6}">
+                        <label class="form-label text-muted small">Your PIN Code</label>
+                        <input type="text" id="pin-input" class="form-control glass-input rounded" placeholder="e.g. 400001" maxlength="6" pattern="[0-9]{6}">
                     </div>
-                    <div class="col-12 col-sm-3">
+                    <div class="col-12 col-sm-3 d-flex align-items-end">
                         <button id="locate-btn" class="btn btn-neon-cyan w-100 rounded" onclick="locateBooth()">
                             <i class="bi bi-search me-1"></i> Search
                         </button>
                     </div>
                 </div>
-                <div id="locator-error" class="text-danger small mt-2 d-none">Please select a state and enter a valid 6-digit PIN code.</div>
+                <div id="locator-error" class="text-danger small mt-2 d-none">⚠️ Please select a state and enter a valid 6-digit PIN code.</div>
             </div>
 
-            <!-- Results Area -->
-            <div class="flex-grow-1 overflow-auto p-3" id="booth-results">
-                <!-- Default Empty State -->
-                <div id="locator-empty" class="d-flex flex-column align-items-center justify-content-center h-100 text-center">
-                    <i class="bi bi-map text-neon-cyan" style="font-size: 3rem; opacity: 0.4;"></i>
-                    <p class="text-muted mt-3 small">Enter your state and PIN code above to find polling booths near you.</p>
-                    <p class="text-muted small mb-0">Results will link directly to your <strong class="text-white">official State Election Commission</strong> website.</p>
+            <!-- Results -->
+            <div class="flex-grow-1 overflow-auto p-4" id="booth-results">
+                <div id="locator-empty" class="d-flex flex-column align-items-center justify-content-center h-100 text-center py-5">
+                    <i class="bi bi-map text-neon-cyan" style="font-size:3.5rem;opacity:0.35;"></i>
+                    <p class="text-muted mt-3">Enter your state and PIN code to find nearby polling booths.</p>
+                    <p class="text-muted small">Results link to official State Election Commission portals.</p>
                 </div>
-                <!-- Results will be injected here by JS -->
             </div>
 
             <!-- Disclaimer -->
             <div class="p-3 border-top border-secondary border-opacity-25">
-                <small class="text-muted d-flex align-items-center gap-1">
-                    <i class="bi bi-info-circle text-neon-cyan"></i>
-                    This is a demo mockup. For official booth data, always verify on your state's Election Commission portal.
-                </small>
+                <small class="text-muted"><i class="bi bi-info-circle text-neon-cyan me-1"></i>Demo mockup — always verify on your official State Election Commission portal.</small>
             </div>
         </div>
-
-        <footer class="mt-4 text-center text-muted small">
-            Designed for strictly objective and educational purposes.
-        </footer>
     </div>
+</section>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <!-- Custom JS -->
-    <script src="app.js"></script>
+<!-- ===================== PAGE: GLOSSARY ===================== -->
+<section class="page" id="page-glossary">
+    <div class="page-wrapper">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-white title-glow">Election <span class="text-neon">Glossary</span></h2>
+            <p class="text-muted">Decode complex election terms in plain, simple language</p>
+        </div>
+
+        <!-- Search -->
+        <div class="glossary-search-wrap mb-4">
+            <input type="text" id="glossary-search" class="form-control glass-input glossary-search" placeholder="🔍  Search terms… e.g. EVM, VVPAT, FPTP">
+        </div>
+
+        <!-- Terms Grid -->
+        <div class="glossary-grid" id="glossary-grid">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
