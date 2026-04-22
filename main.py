@@ -60,8 +60,8 @@ async def chat_endpoint(request: ChatRequest):
         raise HTTPException(status_code=500, detail="Gemini API Key not configured on server.")
     
     try:
-        # We use gemini-pro for text generation
-        model = genai.GenerativeModel('gemini-pro')
+        # We use gemini-1.5-flash for text generation
+        model = genai.GenerativeModel('gemini-1.5-flash')
         
         # Combine the system prompt, any static data, and the user's message
         full_prompt = f"{SYSTEM_PROMPT}\n\nAdditional Static Context:\n{civic_context}\n\nUser Question: {request.message}\n\nAssistant Response:"
