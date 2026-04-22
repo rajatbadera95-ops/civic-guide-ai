@@ -23,10 +23,13 @@
 
         <!-- Nav Links -->
         <div class="nav-links" id="nav-links">
-            <a class="nav-link active" id="nav-home"     onclick="navigate('home')">     <i class="bi bi-house-fill"></i>     <span>Info</span>     </a>
-            <a class="nav-link"        id="nav-chat"     onclick="navigate('chat')">     <i class="bi bi-robot"></i>          <span>Ask AI</span>   </a>
-            <a class="nav-link"        id="nav-locator"  onclick="navigate('locator')">  <i class="bi bi-geo-alt-fill"></i>   <span>Locator</span>  </a>
-            <a class="nav-link"        id="nav-glossary" onclick="navigate('glossary')"> <i class="bi bi-book-half"></i>      <span>Glossary</span> </a>
+            <a class="nav-link active" id="nav-home"        onclick="navigate('home')">        <i class="bi bi-house-fill"></i>               <span data-i18n="nav_info">Info</span>       </a>
+            <a class="nav-link"        id="nav-chat"        onclick="navigate('chat')">        <i class="bi bi-robot"></i>                    <span data-i18n="nav_askai">Ask AI</span>    </a>
+            <a class="nav-link"        id="nav-eligibility" onclick="navigate('eligibility')"> <i class="bi bi-clipboard2-check-fill"></i>     <span data-i18n="nav_eligible">Eligible?</span></a>
+            <a class="nav-link"        id="nav-timeline"    onclick="navigate('timeline')">    <i class="bi bi-calendar3"></i>                <span data-i18n="nav_timeline">Timeline</span></a>
+            <a class="nav-link"        id="nav-locator"     onclick="navigate('locator')">     <i class="bi bi-geo-alt-fill"></i>             <span data-i18n="nav_locator">Locator</span> </a>
+            <a class="nav-link"        id="nav-results"     onclick="navigate('results')">     <i class="bi bi-bar-chart-fill"></i>           <span data-i18n="nav_results">Results</span> </a>
+            <a class="nav-link"        id="nav-glossary"    onclick="navigate('glossary')">    <i class="bi bi-book-half"></i>                <span data-i18n="nav_glossary">Glossary</span></a>
         </div>
 
         <!-- Right Controls -->
@@ -300,6 +303,38 @@
         </div>
     </div>
 
+    <!-- Voter Pledge Section -->
+    <div class="pledge-section" id="pledge-section">
+        <canvas id="confetti-canvas"></canvas>
+        <div class="pledge-inner">
+            <div class="pledge-icon">🗳️</div>
+            <h2 class="pledge-title">Take the <span class="text-neon">Voter's Pledge</span></h2>
+            <p class="pledge-sub">Join millions of Indians who commit to making their voice heard. Democracy begins with you.</p>
+            <div id="pledge-btn-wrap">
+                <button class="btn-pledge" id="pledge-btn" onclick="takePledge()">
+                    <i class="bi bi-patch-check-fill me-2"></i>I Pledge to Vote
+                </button>
+            </div>
+            <div id="pledge-done" class="pledge-done d-none">
+                <div class="pledge-badge">
+                    <i class="bi bi-patch-check-fill"></i>
+                    <div>
+                        <strong>Pledge Taken!</strong>
+                        <p>You are part of India's democratic future.</p>
+                    </div>
+                </div>
+                <div class="pledge-share-row">
+                    <a href="https://twitter.com/intent/tweet?text=🗳️%20I%20pledge%20to%20vote!%20Every%20vote%20matters.%20Check%20out%20CivicGuideAI%20for%20election%20education.%20%23IWillVote%20%23CivicGuideAI" target="_blank" class="btn-share twitter"><i class="bi bi-twitter-x me-1"></i>Share on X</a>
+                    <a href="https://wa.me/?text=🗳️%20I%20pledge%20to%20vote!%20Learn%20about%20elections%20at%20https://rajatbadera95-ops.github.io/civic-guide-ai/" target="_blank" class="btn-share whatsapp"><i class="bi bi-whatsapp me-1"></i>Share on WhatsApp</a>
+                </div>
+                <button class="vid-reset mt-2" onclick="resetPledge()">↩ Reset</button>
+            </div>
+            <div class="pledge-counter">
+                <span id="pledge-count">14,832</span> people have pledged today
+            </div>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <p>Civic Guide AI &copy; 2026 &nbsp;·&nbsp; Designed for strictly objective and educational purposes &nbsp;·&nbsp; Not affiliated with any political party or government body.</p>
     </footer>
@@ -484,6 +519,150 @@
         <!-- Terms Grid -->
         <div class="glossary-grid" id="glossary-grid">
             <!-- Injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PAGE: AM I ELIGIBLE ===================== -->
+<section class="page" id="page-eligibility">
+    <div class="page-wrapper">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-white title-glow">Am I <span class="text-neon">Eligible to Vote?</span></h2>
+            <p class="text-muted">Answer 5 quick questions to find out if you can vote in Indian elections</p>
+        </div>
+
+        <div class="wizard-wrap glassmorphism" id="eligibility-wizard">
+            <!-- Progress Bar -->
+            <div class="wizard-progress">
+                <div class="wizard-progress-bar" id="wizard-progress-bar" style="width:20%"></div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="wizard-step active" id="estep-1">
+                <div class="step-num">Step 1 of 5</div>
+                <div class="step-icon">🇮🇳</div>
+                <h4 class="step-q">Are you a citizen of India?</h4>
+                <p class="step-hint">Only Indian citizens are allowed to vote in Indian elections.</p>
+                <div class="step-btns">
+                    <button class="step-btn yes" onclick="wizardNext(1, true)">✅ Yes</button>
+                    <button class="step-btn no"  onclick="wizardNext(1, false)">❌ No</button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="wizard-step" id="estep-2">
+                <div class="step-num">Step 2 of 5</div>
+                <div class="step-icon">🎂</div>
+                <h4 class="step-q">Are you 18 years of age or older?</h4>
+                <p class="step-hint">The minimum voting age in India is 18, as per Article 326 of the Constitution.</p>
+                <div class="step-btns">
+                    <button class="step-btn yes" onclick="wizardNext(2, true)">✅ Yes, I'm 18+</button>
+                    <button class="step-btn no"  onclick="wizardNext(2, false)">❌ No, I'm under 18</button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="wizard-step" id="estep-3">
+                <div class="step-num">Step 3 of 5</div>
+                <div class="step-icon">🏠</div>
+                <h4 class="step-q">Are you ordinarily resident in a constituency?</h4>
+                <p class="step-hint">You must have a permanent home or reside habitually in the place where you want to register to vote.</p>
+                <div class="step-btns">
+                    <button class="step-btn yes" onclick="wizardNext(3, true)">✅ Yes</button>
+                    <button class="step-btn no"  onclick="wizardNext(3, false)">❌ No fixed address</button>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="wizard-step" id="estep-4">
+                <div class="step-num">Step 4 of 5</div>
+                <div class="step-icon">⚖️</div>
+                <h4 class="step-q">Have you been declared mentally incapacitated by a court?</h4>
+                <p class="step-hint">Persons declared of unsound mind by a competent court are not eligible under Section 16 of the RPA, 1950.</p>
+                <div class="step-btns">
+                    <button class="step-btn yes" onclick="wizardNext(4, true)">❌ Yes, I have</button>
+                    <button class="step-btn no"  onclick="wizardNext(4, false)">✅ No, I have not</button>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="wizard-step" id="estep-5">
+                <div class="step-num">Step 5 of 5</div>
+                <div class="step-icon">🔒</div>
+                <h4 class="step-q">Are you currently serving a prison sentence of 2+ years?</h4>
+                <p class="step-hint">Persons convicted and sentenced to imprisonment for 2 or more years are disqualified from voting during that period.</p>
+                <div class="step-btns">
+                    <button class="step-btn yes" onclick="wizardNext(5, true)">❌ Yes</button>
+                    <button class="step-btn no"  onclick="wizardNext(5, false)">✅ No</button>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div class="wizard-step" id="estep-result">
+                <div id="result-eligible" class="wizard-result eligible d-none">
+                    <div class="result-icon">🎉</div>
+                    <h3>You ARE Eligible to Vote!</h3>
+                    <p>Congratulations! You meet all the legal requirements to vote in Indian elections. Make sure you're registered on the Electoral Roll.</p>
+                    <div class="result-actions">
+                        <a href="https://voters.eci.gov.in" target="_blank" class="btn-hero-primary" style="text-decoration:none;display:inline-block">📋 Register to Vote</a>
+                        <button class="btn-hero-secondary" onclick="wizardReset()">↩ Start Over</button>
+                    </div>
+                </div>
+                <div id="result-not-eligible" class="wizard-result not-eligible d-none">
+                    <div class="result-icon">❌</div>
+                    <h3>You Are Not Currently Eligible</h3>
+                    <p id="result-reason" class="text-muted"></p>
+                    <button class="btn-hero-secondary" onclick="wizardReset()">↩ Try Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PAGE: ELECTION TIMELINE ===================== -->
+<section class="page" id="page-timeline">
+    <div class="page-wrapper" style="max-width:960px">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-white title-glow">India's <span class="text-neon">Election Timeline</span></h2>
+            <p class="text-muted">Every Indian General Election from Independence to today — scroll to explore</p>
+        </div>
+        <div class="timeline-scroll-hint"><i class="bi bi-arrow-left-right me-1"></i> Scroll to explore all 18 elections</div>
+        <div class="h-timeline-outer">
+            <div class="h-timeline" id="h-timeline"><!-- Injected by JS --></div>
+        </div>
+        <div class="timeline-detail-card glassmorphism" id="timeline-detail">
+            <p class="text-muted text-center" style="margin:0">👆 Click on any election above to see details</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PAGE: ELECTION RESULTS + CONSTITUENCY ===================== -->
+<section class="page" id="page-results">
+    <div class="page-wrapper" style="max-width:960px">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-white title-glow">Constituency <span class="text-neon">Lookup & Results</span></h2>
+            <p class="text-muted">Find your constituency by PIN code and explore past election results</p>
+        </div>
+
+        <!-- Constituency Lookup -->
+        <div class="glassmorphism p-4 mb-4 rounded-3">
+            <h5 class="text-white fw-bold mb-3"><i class="bi bi-search text-neon me-2"></i>Find My Constituency</h5>
+            <div class="row g-3">
+                <div class="col-sm-8">
+                    <input type="text" id="const-pin" class="form-control glass-input" placeholder="Enter your 6-digit PIN code e.g. 110001" maxlength="6">
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-neon-cyan w-100 rounded" onclick="lookupConstituency()"><i class="bi bi-search me-1"></i>Lookup</button>
+                </div>
+            </div>
+            <div id="const-result" class="mt-3"></div>
+        </div>
+
+        <!-- Results Search -->
+        <div class="glassmorphism p-4 rounded-3">
+            <h5 class="text-white fw-bold mb-3"><i class="bi bi-bar-chart-fill text-neon me-2"></i>Past Election Results</h5>
+            <input type="text" id="results-search" class="form-control glass-input mb-3" placeholder="🔍 Search constituency e.g. Lucknow, Mumbai, Delhi">
+            <div id="results-table-wrap"><!-- Injected by JS --></div>
         </div>
     </div>
 </section>

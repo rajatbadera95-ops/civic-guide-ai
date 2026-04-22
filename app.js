@@ -405,3 +405,362 @@ function locateBooth() {
     document.getElementById('locator-empty').classList.add('d-none');
     results.innerHTML = html;
 }
+
+/* ==============================================
+   ELIGIBILITY WIZARD
+============================================== */
+const wizardReasons = {
+    1: "You must be a citizen of India to vote. Non-citizens are not eligible under Article 326 of the Constitution.",
+    2: "You must be at least 18 years old on the qualifying date (January 1st of the year of revision of the electoral roll).",
+    3: "You must be ordinarily resident in the constituency where you wish to register. Persons without a fixed address may still apply under special provisions.",
+    4: "Persons declared of unsound mind by a competent court are disqualified under Section 16 of the Representation of the People Act, 1950.",
+    5: "Persons serving a prison sentence of 2 or more years are disqualified from voting during that period under Section 11A of the RPA."
+};
+
+let currentWizardStep = 1;
+
+function wizardNext(step, answer) {
+    const disqualified = (step === 1 && !answer) || (step === 2 && !answer) ||
+                         (step === 3 && !answer) || (step === 4 && answer)  ||
+                         (step === 5 && answer);
+
+    if (disqualified) {
+        showWizardResult(false, wizardReasons[step]);
+        return;
+    }
+
+    if (step < 5) {
+        const nextStep = step + 1;
+        document.getElementById('estep-' + step).classList.remove('active');
+        document.getElementById('estep-' + nextStep).classList.add('active');
+        document.getElementById('wizard-progress-bar').style.width = (nextStep * 20) + '%';
+        currentWizardStep = nextStep;
+    } else {
+        showWizardResult(true);
+    }
+}
+
+function showWizardResult(eligible, reason) {
+    document.getElementById('estep-' + currentWizardStep).classList.remove('active');
+    document.getElementById('estep-result').classList.add('active');
+    document.getElementById('wizard-progress-bar').style.width = '100%';
+    if (eligible) {
+        document.getElementById('result-eligible').classList.remove('d-none');
+        document.getElementById('result-not-eligible').classList.add('d-none');
+    } else {
+        document.getElementById('result-not-eligible').classList.remove('d-none');
+        document.getElementById('result-eligible').classList.add('d-none');
+        document.getElementById('result-reason').textContent = reason;
+    }
+}
+
+function wizardReset() {
+    for (let i = 1; i <= 5; i++) document.getElementById('estep-' + i).classList.remove('active');
+    document.getElementById('estep-result').classList.remove('active');
+    document.getElementById('result-eligible').classList.add('d-none');
+    document.getElementById('result-not-eligible').classList.add('d-none');
+    document.getElementById('wizard-progress-bar').style.width = '20%';
+    currentWizardStep = 1;
+    document.getElementById('estep-1').classList.add('active');
+}
+
+/* ==============================================
+   ELECTION TIMELINE
+============================================== */
+const elections = [
+    { year:'1951', seats:489, winner:'Indian National Congress', party:'INC', won:364, pm:'Jawaharlal Nehru', turnout:'45.7%', fact:'India\'s first ever General Election spanning 5 months. 173 million voters. Nehru\'s Congress wins a historic majority.' },
+    { year:'1957', seats:494, winner:'Indian National Congress', party:'INC', won:371, pm:'Jawaharlal Nehru', turnout:'47.7%', fact:'Congress consolidates power. Communist Party becomes the largest opposition with 27 seats.' },
+    { year:'1962', seats:494, winner:'Indian National Congress', party:'INC', won:361, pm:'Jawaharlal Nehru', turnout:'55.4%', fact:'Congress wins again, but loses ground. Months later, the Sino-Indian War dents Nehru\'s prestige.' },
+    { year:'1967', seats:520, winner:'Indian National Congress', party:'INC', won:283, pm:'Indira Gandhi', turnout:'61.3%', fact:'Congress loses majority in 8 states. Indira Gandhi becomes PM. The era of dominant one-party rule begins to fade.' },
+    { year:'1971', seats:518, winner:'Indian National Congress', party:'INC', won:352, pm:'Indira Gandhi', turnout:'55.3%', fact:'Indira\'s "Garibi Hatao" (Remove Poverty) campaign wins a landslide. Bangladesh Liberation War follows the same year.' },
+    { year:'1977', seats:542, winner:'Janata Party', party:'JP', won:295, pm:'Morarji Desai', turnout:'60.5%', fact:'First non-Congress government. Emergency period backlash sweeps Congress out. Indira Gandhi loses her own seat.' },
+    { year:'1980', seats:542, winner:'Indian National Congress', party:'INC', won:353, pm:'Indira Gandhi', turnout:'57.0%', fact:'Indira Gandhi makes a dramatic comeback. Janata Party collapses due to internal conflict.' },
+    { year:'1984', seats:542, winner:'Indian National Congress', party:'INC', won:414, pm:'Rajiv Gandhi', turnout:'64.1%', fact:'Sympathy wave after Indira Gandhi\'s assassination. Congress wins its largest ever majority — 414 seats.' },
+    { year:'1989', seats:543, winner:'Janata Dal', party:'JD', won:143, pm:'VP Singh', turnout:'62.0%', fact:'VP Singh\'s anti-corruption wave defeats Congress. Coalition politics begins in India.' },
+    { year:'1991', seats:543, winner:'Indian National Congress', party:'INC', won:244, pm:'PV Narasimha Rao', turnout:'57.0%', fact:'Rajiv Gandhi assassinated mid-campaign. Economic liberalisation begins under Rao and Manmohan Singh.' },
+    { year:'1996', seats:543, winner:'Bharatiya Janata Party', party:'BJP', won:161, pm:'HD Deve Gowda', turnout:'58.0%', fact:'Hung parliament. Vajpayee\'s BJP forms govt but resigns after 13 days. United Front coalition takes over.' },
+    { year:'1998', seats:543, winner:'Bharatiya Janata Party', party:'BJP', won:182, pm:'Atal Bihari Vajpayee', turnout:'62.0%', fact:'BJP-led NDA forms government. India conducts Pokhran-II nuclear tests shortly after.' },
+    { year:'1999', seats:543, winner:'Bharatiya Janata Party', party:'BJP', won:182, pm:'Atal Bihari Vajpayee', turnout:'60.0%', fact:'NDA wins a full term after Congress withdraws support from Vajpayee\'s government. Kargil War context shapes voter mood.' },
+    { year:'2004', seats:543, winner:'Indian National Congress', party:'INC', won:145, pm:'Manmohan Singh', turnout:'58.1%', fact:'Shock result — BJP\'s "India Shining" campaign backfires. UPA coalition formed. Manmohan Singh becomes PM.' },
+    { year:'2009', seats:543, winner:'Indian National Congress', party:'INC', won:206, pm:'Manmohan Singh', turnout:'58.2%', fact:'UPA returns to power. Congress wins 206 seats — its best since 1991. Mumbai 26/11 aftermath shapes the campaign.' },
+    { year:'2014', seats:543, winner:'Bharatiya Janata Party', party:'BJP', won:282, pm:'Narendra Modi', turnout:'66.4%', fact:'Modi wave sweeps India. BJP wins an outright majority alone — first party to do so since 1984. Record 66.4% turnout.' },
+    { year:'2019', seats:543, winner:'Bharatiya Janata Party', party:'BJP', won:303, pm:'Narendra Modi', turnout:'67.4%', fact:'BJP improves to 303 seats. Highest ever turnout at 67.4%. Pulwama-Balakot tensions dominate the campaign.' },
+    { year:'2024', seats:543, winner:'Bharatiya Janata Party', party:'BJP', won:240, pm:'Narendra Modi', turnout:'66.3%', fact:'BJP loses outright majority, wins 240. NDA coalition forms government. Opposition INDIA bloc performs better than expected.' },
+];
+
+function renderTimeline() {
+    const container = document.getElementById('h-timeline');
+    if (!container || container.innerHTML) return;
+    const maxSeats = Math.max(...elections.map(e => e.won));
+    container.innerHTML = elections.map((e, i) => {
+        const h = Math.round((e.won / maxSeats) * 100) + 20;
+        return `<div class="h-election" onclick="showTimelineDetail(${i})">
+            <div class="h-bar" style="height:${h}px"></div>
+            <div class="h-dot"></div>
+            <div class="h-year">${e.year}</div>
+            <div class="h-seats">${e.won}/${e.seats}</div>
+        </div>`;
+    }).join('');
+}
+
+function showTimelineDetail(index) {
+    const e = elections[index];
+    document.querySelectorAll('.h-election').forEach((el, i) => el.classList.toggle('selected', i === index));
+    const detail = document.getElementById('timeline-detail');
+    detail.innerHTML = `
+        <div class="td-grid">
+            <div class="td-name">${e.year} — ${e.winner} <span class="td-party">${e.party}</span></div>
+            <div class="td-cell"><div class="td-label">Prime Minister</div><div class="td-val">${e.pm}</div></div>
+            <div class="td-cell"><div class="td-label">Seats Won</div><div class="td-val neon">${e.won} / ${e.seats}</div></div>
+            <div class="td-cell"><div class="td-label">Voter Turnout</div><div class="td-val">${e.turnout}</div></div>
+            <div class="td-cell" style="grid-column:1/-1;text-align:left"><div class="td-label">Key Fact</div><div style="font-size:0.85rem;color:var(--text);line-height:1.6">${e.fact}</div></div>
+        </div>`;
+}
+
+// Render when timeline page is navigated to
+const _navOrig = window.navigate;
+window.navigate = function(page) {
+    _navOrig(page);
+    if (page === 'timeline') { renderTimeline(); }
+    if (page === 'results')  { renderResultsTable(''); }
+    if (page === 'glossary') { renderGlossary(); }
+};
+
+/* ==============================================
+   CONSTITUENCY LOOKUP
+============================================== */
+const constituencyData = {
+    '110': { name:'New Delhi', state:'Delhi',           mp:'Bansuri Swaraj (BJP)',      lok:'New Delhi',           vid:'Chandni Chowk' },
+    '400': { name:'Mumbai South', state:'Maharashtra',  mp:'Arvind Sawant (SS-UBT)',   lok:'Mumbai South',        vid:'Malabar Hill' },
+    '700': { name:'Kolkata North', state:'West Bengal',  mp:'Sudip Bandopadhyay (TMC)',  lok:'Kolkata North',       vid:'Jorasanko' },
+    '600': { name:'Chennai Central', state:'Tamil Nadu', mp:'Dayanidhi Maran (DMK)',    lok:'Chennai Central',     vid:'Thousand Lights' },
+    '500': { name:'Secunderabad', state:'Telangana',    mp:'G Kishan Reddy (BJP)',     lok:'Secunderabad',        vid:'Secunderabad Cantonment' },
+    '560': { name:'Bangalore South', state:'Karnataka',  mp:'Tejasvi Surya (BJP)',      lok:'Bangalore South',     vid:'Jayanagar' },
+    '380': { name:'Ahmedabad East', state:'Gujarat',    mp:'Hasmukhbhai Patel (BJP)',  lok:'Ahmedabad East',      vid:'Maninagar' },
+    '302': { name:'Jaipur', state:'Rajasthan',          mp:'Manju Sharma (BJP)',       lok:'Jaipur',              vid:'Civil Lines' },
+    '226': { name:'Lucknow', state:'Uttar Pradesh',     mp:'Rajnath Singh (BJP)',      lok:'Lucknow',             vid:'Lucknow Cantonment' },
+    '411': { name:'Pune', state:'Maharashtra',          mp:'Murlidhar Mohol (BJP)',    lok:'Pune',                vid:'Kasba Peth' },
+    '440': { name:'Nagpur', state:'Maharashtra',        mp:'Nitin Gadkari (BJP)',      lok:'Nagpur',              vid:'Nagpur South West' },
+    '248': { name:'Dehradun', state:'Uttarakhand',      mp:'Anil Baluni (BJP)',        lok:'Tehri Garhwal',       vid:'Rajpur Road' },
+    '641': { name:'Coimbatore', state:'Tamil Nadu',     mp:'K Subbarayan (CPI)',       lok:'Coimbatore',          vid:'Coimbatore North' },
+    '462': { name:'Bhopal', state:'Madhya Pradesh',     mp:'Alok Sharma (BJP)',        lok:'Bhopal',              vid:'Huzur' },
+    '160': { name:'Chandigarh', state:'Punjab',         mp:'Kirron Kher (BJP)',        lok:'Chandigarh',          vid:'Sector 8' },
+};
+
+function lookupConstituency() {
+    const pin = document.getElementById('const-pin').value.trim();
+    const result = document.getElementById('const-result');
+    if (!/^\d{6}$/.test(pin)) {
+        result.innerHTML = '<p class="text-danger small">⚠️ Please enter a valid 6-digit PIN code.</p>';
+        return;
+    }
+    const prefix = pin.substring(0, 3);
+    const data = constituencyData[prefix];
+    if (data) {
+        result.innerHTML = `<div class="const-card">
+            <div class="const-name">${data.name} Constituency</div>
+            <div class="const-meta">📍 ${data.state} &nbsp;·&nbsp; Lok Sabha: <strong>${data.lok}</strong> &nbsp;·&nbsp; Vidhan Sabha: <strong>${data.vid}</strong></div>
+            <div class="const-mp"><i class="bi bi-person-fill me-1"></i>Current MP: ${data.mp}</div>
+        </div>`;
+    } else {
+        result.innerHTML = `<div class="const-card">
+            <div class="const-name">Constituency Found</div>
+            <div class="const-meta">PIN: ${pin} — For precise constituency details, visit the official ECI portal.</div>
+            <div class="const-mp"><a href="https://voters.eci.gov.in/" target="_blank" class="vid-link mt-2" style="display:inline-flex;width:auto"><i class="bi bi-box-arrow-up-right me-1"></i>Check on ECI Portal</a></div>
+        </div>`;
+    }
+}
+
+/* ==============================================
+   ELECTION RESULTS HISTORY
+============================================== */
+const electionResults = [
+    { constituency:'Lucknow',          state:'UP',          winner:'Rajnath Singh',     party:'BJP', votes:'697,558', margin:'341,801', year:'2024' },
+    { constituency:'Lucknow',          state:'UP',          winner:'Rajnath Singh',     party:'BJP', votes:'632,000', margin:'247,080', year:'2019' },
+    { constituency:'Varanasi',         state:'UP',          winner:'Narendra Modi',     party:'BJP', votes:'612,970', margin:'152,513', year:'2024' },
+    { constituency:'Varanasi',         state:'UP',          winner:'Narendra Modi',     party:'BJP', votes:'674,664', margin:'479,505', year:'2019' },
+    { constituency:'New Delhi',        state:'Delhi',       winner:'Bansuri Swaraj',    party:'BJP', votes:'445,550', margin:'78,370',  year:'2024' },
+    { constituency:'New Delhi',        state:'Delhi',       winner:'Meenakshi Lekhi',   party:'BJP', votes:'389,472', margin:'107,028', year:'2019' },
+    { constituency:'Mumbai South',     state:'Maharashtra', winner:'Arvind Sawant',     party:'SS-UBT', votes:'346,222', margin:'8,924', year:'2024' },
+    { constituency:'Kolkata North',    state:'WB',          winner:'Sudip Bandopadhyay',party:'TMC', votes:'552,892', margin:'222,523', year:'2019' },
+    { constituency:'Hyderabad',        state:'Telangana',   winner:'Asaduddin Owaisi',  party:'AIMIM', votes:'519,000', margin:'338,087', year:'2024' },
+    { constituency:'Hyderabad',        state:'Telangana',   winner:'Asaduddin Owaisi',  party:'AIMIM', votes:'517,471', margin:'282,186', year:'2019' },
+    { constituency:'Bangalore South',  state:'Karnataka',   winner:'Tejasvi Surya',     party:'BJP', votes:'840,395', margin:'331,192', year:'2024' },
+    { constituency:'Bangalore South',  state:'Karnataka',   winner:'Tejasvi Surya',     party:'BJP', votes:'712,757', margin:'331,192', year:'2019' },
+    { constituency:'Pune',             state:'Maharashtra', winner:'Murlidhar Mohol',   party:'BJP', votes:'524,622', margin:'102,742', year:'2024' },
+    { constituency:'Chennai Central',  state:'TN',          winner:'Dayanidhi Maran',   party:'DMK', votes:'424,100', margin:'157,469', year:'2019' },
+    { constituency:'Nagpur',           state:'Maharashtra', winner:'Nitin Gadkari',     party:'BJP', votes:'697,000', margin:'335,584', year:'2024' },
+    { constituency:'Nagpur',           state:'Maharashtra', winner:'Nitin Gadkari',     party:'BJP', votes:'660,221', margin:'216,189', year:'2019' },
+];
+
+const partyClasses = { BJP:'bjp', INC:'inc', TMC:'tmc', DMK:'dmk', SP:'sp', AIMIM:'aimim', 'SS-UBT':'other' };
+
+function renderResultsTable(filter) {
+    const wrap = document.getElementById('results-table-wrap');
+    if (!wrap) return;
+    const filtered = filter
+        ? electionResults.filter(r => r.constituency.toLowerCase().includes(filter) || r.state.toLowerCase().includes(filter) || r.winner.toLowerCase().includes(filter))
+        : electionResults;
+
+    if (!filtered.length) { wrap.innerHTML = '<p class="text-muted text-center py-4">No results found.</p>'; return; }
+
+    const pc = r => `<span class="party-badge party-${partyClasses[r.party]||'other'}">${r.party}</span>`;
+    wrap.innerHTML = `<div style="overflow-x:auto"><table class="results-table">
+        <thead><tr><th>Year</th><th>Constituency</th><th>State</th><th>Winner</th><th>Party</th><th>Votes</th><th>Margin</th></tr></thead>
+        <tbody>${filtered.map(r => `<tr>
+            <td><strong>${r.year}</strong></td>
+            <td>${r.constituency}</td>
+            <td>${r.state}</td>
+            <td>${r.winner}</td>
+            <td>${pc(r)}</td>
+            <td>${r.votes}</td>
+            <td style="color:var(--neon)">${r.margin}</td>
+        </tr>`).join('')}</tbody>
+    </table></div>`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const rs = document.getElementById('results-search');
+    if (rs) rs.addEventListener('input', e => renderResultsTable(e.target.value.trim().toLowerCase()));
+});
+
+/* ==============================================
+   VOTER PLEDGE + CONFETTI
+============================================== */
+let pledgeDone = false;
+
+function takePledge() {
+    if (pledgeDone) return;
+    pledgeDone = true;
+    document.getElementById('pledge-btn-wrap').classList.add('d-none');
+    document.getElementById('pledge-done').classList.remove('d-none');
+    // Increment counter
+    const el = document.getElementById('pledge-count');
+    const current = parseInt(el.textContent.replace(/,/g,''));
+    el.textContent = (current + 1).toLocaleString();
+    // Fire confetti
+    fireConfetti();
+}
+
+function resetPledge() {
+    pledgeDone = false;
+    document.getElementById('pledge-btn-wrap').classList.remove('d-none');
+    document.getElementById('pledge-done').classList.add('d-none');
+}
+
+function fireConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const colors = ['#00ffcc','#b300ff','#ff4d6d','#ffa500','#4fa3e0','#23a455','#ffffff'];
+    const pieces = Array.from({length: 120}, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * -canvas.height,
+        r: Math.random() * 6 + 3,
+        d: Math.random() * 1.5 + 0.5,
+        c: colors[Math.floor(Math.random() * colors.length)],
+        t: Math.random() * Math.PI * 2,
+        ts: (Math.random() - 0.5) * 0.1,
+    }));
+
+    let frame = 0;
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.c;
+            ctx.globalAlpha = Math.max(0, 1 - frame / 180);
+            ctx.fill();
+            p.y += p.d * 3;
+            p.x += Math.sin(p.t) * 1.5;
+            p.t += p.ts;
+        });
+        frame++;
+        if (frame < 200) requestAnimationFrame(draw);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    draw();
+}
+
+/* ==============================================
+   MULTI-LANGUAGE FULL UI  (i18n)
+============================================== */
+const translations = {
+    English: {
+        nav_info:'Info', nav_askai:'Ask AI', nav_eligible:'Eligible?',
+        nav_timeline:'Timeline', nav_locator:'Locator', nav_results:'Results', nav_glossary:'Glossary',
+        hero_title:'Your Vote. Your Power.',
+        chat_placeholder:'Ask about elections, voting, or registration...',
+        vid_title:'Do you have a Voter ID?',
+        vid_yes:'Yes, I have it', vid_no:"No, I don't",
+    },
+    Hindi: {
+        nav_info:'जानकारी', nav_askai:'AI से पूछें', nav_eligible:'पात्र?',
+        nav_timeline:'समयरेखा', nav_locator:'बूथ खोजें', nav_results:'परिणाम', nav_glossary:'शब्दकोश',
+        hero_title:'आपका वोट। आपकी शक्ति।',
+        chat_placeholder:'चुनाव, मतदान, या पंजीकरण के बारे में पूछें...',
+        vid_title:'क्या आपके पास मतदाता पहचान पत्र है?',
+        vid_yes:'हाँ, मेरे पास है', vid_no:'नहीं, मेरे पास नहीं है',
+    },
+    Bengali: {
+        nav_info:'তথ্য', nav_askai:'AI জিজ্ঞাসা', nav_eligible:'যোগ্য?',
+        nav_timeline:'সময়রেখা', nav_locator:'বুথ খুঁজুন', nav_results:'ফলাফল', nav_glossary:'শব্দকোষ',
+        hero_title:'আপনার ভোট। আপনার শক্তি।',
+        chat_placeholder:'নির্বাচন, ভোট, বা নিবন্ধন সম্পর্কে জিজ্ঞাসা করুন...',
+        vid_title:'আপনার কি ভোটার আইডি আছে?',
+        vid_yes:'হ্যাঁ, আছে', vid_no:'না, নেই',
+    },
+    Tamil: {
+        nav_info:'தகவல்', nav_askai:'AI கேளுங்கள்', nav_eligible:'தகுதியா?',
+        nav_timeline:'காலவரிசை', nav_locator:'சாவடி கண்டறி', nav_results:'முடிவுகள்', nav_glossary:'சொற்களஞ்சியம்',
+        hero_title:'உங்கள் வோட்டு. உங்கள் சக்தி.',
+        chat_placeholder:'தேர்தல், வாக்களிப்பு பற்றி கேளுங்கள்...',
+        vid_title:'உங்களிடம் வாக்காளர் அட்டை உள்ளதா?',
+        vid_yes:'ஆம், உள்ளது', vid_no:'இல்லை',
+    },
+    Telugu: {
+        nav_info:'సమాచారం', nav_askai:'AI అడగండి', nav_eligible:'అర్హత?',
+        nav_timeline:'కాలరేఖ', nav_locator:'బూత్ కనుగొనండి', nav_results:'ఫలితాలు', nav_glossary:'నిఘంటువు',
+        hero_title:'మీ ఓటు. మీ శక్తి.',
+        chat_placeholder:'ఎన్నికలు, ఓటింగ్ గురించి అడగండి...',
+        vid_title:'మీకు ఓటర్ ID ఉందా?',
+        vid_yes:'అవును, ఉంది', vid_no:'లేదు',
+    },
+    Marathi: {
+        nav_info:'माहिती', nav_askai:'AI विचारा', nav_eligible:'पात्र?',
+        nav_timeline:'कालरेषा', nav_locator:'बूथ शोधा', nav_results:'निकाल', nav_glossary:'शब्दकोश',
+        hero_title:'तुमचा मत. तुमची शक्ती.',
+        chat_placeholder:'निवडणूक, मतदान याबद्दल विचारा...',
+        vid_title:'तुमच्याकडे मतदार ओळखपत्र आहे का?',
+        vid_yes:'होय, आहे', vid_no:'नाही',
+    },
+};
+
+function applyLanguage(lang) {
+    const t = translations[lang] || translations['English'];
+    // Apply all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+    });
+    // Chat placeholder
+    const inp = document.getElementById('user-input');
+    if (inp && t.chat_placeholder) inp.placeholder = t.chat_placeholder;
+    // Voter ID title
+    const vt = document.querySelector('.vid-title');
+    if (vt && t.vid_title) vt.innerHTML = t.vid_title.replace('Voter ID', '<span class="text-neon">Voter ID?</span>');
+}
+
+// Hook into language select change
+document.addEventListener('DOMContentLoaded', () => {
+    const ls = document.getElementById('language-select');
+    if (ls) {
+        ls.addEventListener('change', e => applyLanguage(e.target.value));
+    }
+    // Init results table
+    renderResultsTable('');
+});

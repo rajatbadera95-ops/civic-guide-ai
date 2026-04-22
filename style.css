@@ -1311,3 +1311,399 @@ body.day-theme .text-muted  { color: rgba(30,41,59,0.55) !important; }
     .hero-title { font-size: 2rem; }
     .stats-section { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* =========================================
+   COMPACT NAV (7 items)
+========================================= */
+@media (max-width: 1100px) and (min-width: 769px) {
+    .nav-link span { display: none; }
+    .nav-link { padding: 7px 10px; }
+    .nav-logo span { display: none; }
+}
+
+/* =========================================
+   ELIGIBILITY WIZARD
+========================================= */
+.wizard-wrap {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+.wizard-progress {
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+}
+
+.wizard-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon), #00ccff);
+    transition: width 0.4s ease;
+    box-shadow: 0 0 8px rgba(0,255,204,0.4);
+}
+
+.wizard-step {
+    display: none;
+    padding: 40px 36px;
+    text-align: center;
+    animation: pageIn 0.35s ease;
+}
+
+.wizard-step.active { display: block; }
+
+.step-num {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--neon);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.step-q {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.step-hint {
+    font-size: 0.84rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.step-btn {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font);
+    min-width: 140px;
+}
+
+.step-btn.yes {
+    background: rgba(0,255,204,0.12);
+    border: 1.5px solid var(--neon);
+    color: var(--neon);
+}
+
+.step-btn.no {
+    background: rgba(255,77,109,0.1);
+    border: 1.5px solid rgba(255,77,109,0.5);
+    color: #ff4d6d;
+}
+
+.step-btn:hover { transform: translateY(-2px); filter: brightness(1.15); }
+
+/* Wizard Result */
+.wizard-result { padding: 12px; }
+.result-icon { font-size: 3.5rem; margin-bottom: 14px; }
+.wizard-result h3 { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+.wizard-result p { font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+.result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* =========================================
+   HORIZONTAL TIMELINE
+========================================= */
+.timeline-scroll-hint {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.h-timeline-outer {
+    overflow-x: auto;
+    padding: 20px 0 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon) transparent;
+}
+
+.h-timeline-outer::-webkit-scrollbar { height: 4px; }
+.h-timeline-outer::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 2px; }
+
+.h-timeline {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    min-width: max-content;
+    padding: 60px 40px 20px;
+    position: relative;
+}
+
+/* Connecting line */
+.h-timeline::before {
+    content: '';
+    position: absolute;
+    left: 40px; right: 40px;
+    bottom: 54px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+    opacity: 0.3;
+}
+
+.h-election {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.h-election:hover { transform: translateY(-4px); }
+.h-election.selected .h-dot { background: var(--neon); box-shadow: 0 0 14px rgba(0,255,204,0.6); }
+
+.h-bar {
+    width: 8px;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(to top, rgba(0,255,204,0.15), rgba(0,255,204,0.5));
+    border: 1px solid rgba(0,255,204,0.25);
+    min-height: 20px;
+    transition: all 0.3s;
+    margin-bottom: 0;
+}
+
+.h-election:hover .h-bar,
+.h-election.selected .h-bar {
+    background: linear-gradient(to top, rgba(0,255,204,0.3), var(--neon));
+    box-shadow: 0 0 12px rgba(0,255,204,0.2);
+}
+
+.h-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(0,255,204,0.3);
+    border: 2px solid var(--neon);
+    margin: 6px 0;
+    transition: all 0.25s;
+    z-index: 1;
+}
+
+.h-year {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--neon);
+    margin-top: 4px;
+}
+
+.h-seats {
+    font-size: 0.6rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+/* Detail Card */
+.timeline-detail-card {
+    margin-top: 24px;
+    padding: 24px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pageIn 0.3s ease;
+    border-radius: var(--radius);
+}
+
+.td-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    width: 100%;
+}
+
+.td-cell { text-align: center; }
+.td-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.td-val { font-size: 1rem; font-weight: 700; color: #fff; }
+.td-val.neon { color: var(--neon); }
+.td-name { font-size: 1.1rem; font-weight: 800; color: #fff; grid-column: 1/-1; margin-bottom: 8px; }
+.td-party { display: inline-block; background: rgba(0,255,204,0.1); border: 1px solid rgba(0,255,204,0.25); color: var(--neon); font-size: 0.75rem; font-weight: 600; padding: 2px 10px; border-radius: 999px; margin-bottom: 8px; }
+
+/* =========================================
+   ELECTION RESULTS TABLE
+========================================= */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+}
+
+.results-table th {
+    background: rgba(0,255,204,0.06);
+    color: var(--neon);
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,255,204,0.15);
+    white-space: nowrap;
+}
+
+.results-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: var(--text);
+    vertical-align: middle;
+}
+
+.results-table tr:hover td { background: rgba(0,255,204,0.03); }
+
+.party-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+}
+
+.party-bjp   { color: #ff8c00; border-color: #ff8c00; background: rgba(255,140,0,0.08); }
+.party-inc   { color: #4fa3e0; border-color: #4fa3e0; background: rgba(79,163,224,0.08); }
+.party-tmc   { color: #23a455; border-color: #23a455; background: rgba(35,164,85,0.08); }
+.party-sp    { color: #e84393; border-color: #e84393; background: rgba(232,67,147,0.08); }
+.party-aimim { color: #b8a700; border-color: #b8a700; background: rgba(184,167,0,0.08); }
+.party-dmk   { color: #cc0000; border-color: #cc0000; background: rgba(204,0,0,0.08); }
+.party-other { color: var(--muted); border-color: rgba(255,255,255,0.2); background: transparent; }
+
+/* Constituency card */
+.const-card {
+    background: rgba(0,255,204,0.05);
+    border: 1px solid rgba(0,255,204,0.2);
+    border-radius: 14px;
+    padding: 18px 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.const-name { font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.const-meta { font-size: 0.82rem; color: var(--muted); }
+.const-mp   { font-size: 0.9rem; font-weight: 600; color: var(--neon); margin-top: 8px; }
+
+/* =========================================
+   VOTER PLEDGE + CONFETTI
+========================================= */
+.pledge-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0,255,204,0.04), rgba(179,0,255,0.06));
+    border-top: 1px solid rgba(0,255,204,0.1);
+    padding: 80px 24px;
+    text-align: center;
+}
+
+#confetti-canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.pledge-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.pledge-icon { font-size: 3rem; }
+
+.pledge-title {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+}
+
+.pledge-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 460px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.btn-pledge {
+    background: linear-gradient(135deg, var(--neon), #00ccff);
+    color: #0a0f1e;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 0 30px rgba(0,255,204,0.35);
+    font-family: var(--font);
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.btn-pledge:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 0 50px rgba(0,255,204,0.5);
+}
+
+.pledge-done { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
+
+.pledge-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(0,255,204,0.1);
+    border: 1.5px solid var(--neon);
+    border-radius: 14px;
+    padding: 16px 24px;
+    box-shadow: 0 0 20px rgba(0,255,204,0.15);
+}
+
+.pledge-badge i { font-size: 2rem; color: var(--neon); }
+.pledge-badge strong { font-size: 1rem; color: #fff; }
+.pledge-badge p { font-size: 0.82rem; color: var(--muted); margin: 4px 0 0; }
+
+.pledge-share-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+.btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-share.twitter  { background: rgba(29,161,242,0.12); border: 1px solid rgba(29,161,242,0.35); color: #1da1f2; }
+.btn-share.whatsapp { background: rgba(37,211,102,0.12); border: 1px solid rgba(37,211,102,0.35); color: #25d366; }
+.btn-share:hover { transform: translateY(-2px); filter: brightness(1.15); }
+
+.pledge-counter { font-size: 0.8rem; color: var(--muted); }
+.pledge-counter span { color: var(--neon); font-weight: 700; }
+
