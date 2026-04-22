@@ -875,37 +875,155 @@ body {
 }
 
 /* =========================================
-   SLOGAN MARQUEE STRIP
+   PREMIUM SLOGAN SHOWCASE
 ========================================= */
-.slogan-strip {
-    background: linear-gradient(90deg, rgba(0,255,204,0.05), rgba(179,0,255,0.05));
-    border-top: 1px solid rgba(0,255,204,0.1);
-    border-bottom: 1px solid rgba(0,255,204,0.1);
+.slogan-showcase {
+    background: linear-gradient(135deg, rgba(0,255,204,0.04) 0%, rgba(179,0,255,0.04) 100%);
+    border-top: 1px solid rgba(0,255,204,0.08);
+    border-bottom: 1px solid rgba(0,255,204,0.08);
+    padding: 0;
     overflow: hidden;
-    padding: 14px 0;
+}
+
+/* Top: big rotating quote */
+.slogan-quote-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 24px 36px;
+    text-align: center;
+    position: relative;
+}
+
+.slogan-big-quote {
+    font-family: Georgia, serif;
+    font-size: 8rem;
+    line-height: 0.6;
+    color: var(--neon);
+    opacity: 0.12;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    user-select: none;
+}
+
+.slogan-rotator {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slogan-rotator p {
+    font-size: clamp(1.2rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(0,255,204,0.2);
+    line-height: 1.4;
+    margin: 0;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slogan-rotator p.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.slogan-rotator p.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* Dot progress indicators */
+.slogan-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.slogan-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    padding: 0;
+}
+
+.slogan-dot.active {
+    background: var(--neon);
+    width: 24px;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0,255,204,0.5);
+}
+
+.slogan-dot:hover { background: rgba(0,255,204,0.5); }
+
+/* Bottom: slim ticker strip */
+.slogan-ticker-strip {
+    position: relative;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    overflow: hidden;
+    padding: 10px 0;
     white-space: nowrap;
 }
 
-.slogan-track {
+.slogan-ticker-track {
     display: inline-flex;
-    gap: 60px;
-    animation: marqueeScroll 40s linear infinite;
+    align-items: center;
+    gap: 28px;
+    animation: tickerScroll 45s linear infinite;
 }
 
-.slogan-track span {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--neon);
-    opacity: 0.85;
+.slogan-ticker-track span {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
     flex-shrink: 0;
 }
 
-@keyframes marqueeScroll {
+.slogan-ticker-track .sep {
+    color: var(--neon);
+    opacity: 0.4;
+    font-size: 0.5rem;
+}
+
+@keyframes tickerScroll {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
 }
 
-.slogan-strip:hover .slogan-track { animation-play-state: paused; }
+.slogan-ticker-strip:hover .slogan-ticker-track {
+    animation-play-state: paused;
+}
+
+/* Gradient fade edges */
+.slogan-fade-left,
+.slogan-fade-right {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.slogan-fade-left  { left:  0; background: linear-gradient(to right, var(--bg), transparent); }
+.slogan-fade-right { right: 0; background: linear-gradient(to left,  var(--bg), transparent); }
+
+/* Day theme adjustments */
+body.day-theme .slogan-showcase { background: rgba(0,180,140,0.04); }
+body.day-theme .slogan-ticker-strip { background: rgba(0,0,0,0.04); }
+body.day-theme .slogan-rotator p { color: #1e293b; }
+body.day-theme .slogan-fade-left  { background: linear-gradient(to right, var(--bg), transparent); }
+body.day-theme .slogan-fade-right { background: linear-gradient(to left,  var(--bg), transparent); }
+
+
 
 /* =========================================
    QUOTE CARDS (Power of Vote)

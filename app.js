@@ -58,6 +58,71 @@ function voterIdReset() {
     document.getElementById('vid-no').classList.add('d-none');
 }
 
+/* =============== SLOGAN ROTATOR =============== */
+const slogans = [
+    "Your vote is your voice — use it.",
+    "One vote can change the course of history.",
+    "Don't let others decide your future for you.",
+    "Democracy only works when YOU participate.",
+    "The most powerful weapon is the right to vote.",
+    "Every single vote counts — every. single. one.",
+    "Great leaders are chosen by informed, active voters.",
+];
+
+let currentSlogan = 0;
+let sloganTimer = null;
+
+function initSloganRotator() {
+    const dotsEl = document.getElementById('slogan-dots');
+    const textEl = document.getElementById('slogan-text');
+    if (!dotsEl || !textEl) return;
+
+    // Build dot buttons
+    dotsEl.innerHTML = '';
+    slogans.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'slogan-dot' + (i === 0 ? ' active' : '');
+        btn.onclick = () => goToSlogan(i);
+        dotsEl.appendChild(btn);
+    });
+
+    // Auto-rotate every 4 seconds
+    sloganTimer = setInterval(() => goToSlogan((currentSlogan + 1) % slogans.length), 4000);
+}
+
+function goToSlogan(index) {
+    const textEl = document.getElementById('slogan-text');
+    const dots   = document.querySelectorAll('.slogan-dot');
+    if (!textEl) return;
+
+    // Fade out
+    textEl.classList.add('fade-out');
+
+    setTimeout(() => {
+        currentSlogan = index;
+        textEl.textContent = slogans[currentSlogan];
+        textEl.classList.remove('fade-out');
+        textEl.classList.add('fade-in');
+
+        // Update dots
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentSlogan));
+
+        // Fade in
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                textEl.classList.remove('fade-in');
+            });
+        });
+
+        // Reset auto-timer on manual click
+        if (sloganTimer) { clearInterval(sloganTimer); }
+        sloganTimer = setInterval(() => goToSlogan((currentSlogan + 1) % slogans.length), 4000);
+    }, 500);
+}
+
+// Init on page load
+document.addEventListener('DOMContentLoaded', initSloganRotator);
+
 
 
 /* =============== COUNTDOWN TIMER =============== */
