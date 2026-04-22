@@ -1,5 +1,5 @@
 :root {
-    --bg-dark: #0f172a; /* Tailwind slate-900 */
+    --bg-dark: #0f172a;
     --neon-cyan: #00ffcc;
     --neon-purple: #b300ff;
     --glass-bg: rgba(255, 255, 255, 0.04);
@@ -36,18 +36,59 @@ body {
     text-shadow: 0 0 15px rgba(0, 255, 204, 0.3), 0 0 30px rgba(179, 0, 255, 0.2);
 }
 
-/* Glassmorphism Chat Container */
-.chat-container {
-    width: 100%;
-    max-width: 600px;
-    height: 75vh;
+/* Glassmorphism Base */
+.glassmorphism {
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
+}
+
+/* ===== COUNTDOWN BANNER ===== */
+.countdown-banner {
+    border-radius: 16px !important;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+    border-color: rgba(0, 255, 204, 0.2) !important;
+    animation: bannerPulse 4s ease-in-out infinite;
+}
+
+@keyframes bannerPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 204, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(0, 255, 204, 0.2); }
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+}
+
+.countdown-val {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+    min-width: 2rem;
+    text-align: center;
+}
+
+.countdown-unit small {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===== CHAT CONTAINER ===== */
+.chat-container {
+    width: 100%;
+    max-width: 620px;
+    height: 72vh;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     z-index: 10;
+    border-radius: 20px !important;
 }
 
 /* Status Indicator */
@@ -60,32 +101,54 @@ body {
     box-shadow: 0 0 8px rgba(25, 135, 84, 0.8);
 }
 
-/* Custom Scrollbar for Chat History */
-.chat-history::-webkit-scrollbar {
-    width: 6px;
+/* ===== LANGUAGE SELECTOR ===== */
+.lang-select {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(0, 255, 204, 0.25);
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    max-width: 130px;
 }
-.chat-history::-webkit-scrollbar-track {
+
+.lang-select:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+}
+
+.lang-select option {
+    background: #1e293b;
+    color: #fff;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+.chat-history::-webkit-scrollbar,
+.quick-asks::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+.chat-history::-webkit-scrollbar-track,
+.quick-asks::-webkit-scrollbar-track {
     background: transparent;
 }
-.chat-history::-webkit-scrollbar-thumb {
+.chat-history::-webkit-scrollbar-thumb,
+.quick-asks::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
 
-/* Messages */
+/* ===== MESSAGES ===== */
 .message {
     animation: fadeIn 0.3s ease-out forwards;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .bot-message .message-bubble {
@@ -94,7 +157,7 @@ body {
     border-bottom-left-radius: 0 !important;
     max-width: 85%;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .user-message .message-bubble {
@@ -104,14 +167,12 @@ body {
     border-bottom-right-radius: 0 !important;
     max-width: 80%;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.6;
     box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2) !important;
 }
 
-/* Typing Indicator Animation */
-.typing-indicator {
-    height: 20px;
-}
+/* ===== TYPING INDICATOR ===== */
+.typing-indicator { height: 20px; }
 
 .dot {
     width: 8px;
@@ -129,10 +190,43 @@ body {
     40% { transform: scale(1); opacity: 1; box-shadow: 0 0 8px var(--neon-cyan); }
 }
 
-/* Glass Input */
+/* ===== QUICK ASK PILLS ===== */
+.quick-asks {
+    scrollbar-width: thin;
+    padding-bottom: 8px;
+    flex-wrap: nowrap;
+}
+
+.quick-pill {
+    white-space: nowrap;
+    background: rgba(0, 255, 204, 0.07);
+    border: 1px solid rgba(0, 255, 204, 0.25);
+    color: var(--neon-cyan);
+    border-radius: 999px;
+    padding: 5px 14px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.quick-pill:hover {
+    background: rgba(0, 255, 204, 0.18);
+    border-color: var(--neon-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
+}
+
+.quick-pill:active {
+    transform: translateY(0);
+}
+
+/* ===== GLASS INPUT ===== */
 .glass-input {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
+    border-left: none;
     color: #fff;
     transition: all 0.3s ease;
 }
@@ -148,7 +242,47 @@ body {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* Neon Button */
+/* ===== MIC BUTTON ===== */
+.btn-mic {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-right: none;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.btn-mic:hover {
+    background: rgba(0, 255, 204, 0.1);
+    color: var(--neon-cyan);
+    border-color: rgba(0, 255, 204, 0.3);
+}
+
+.btn-mic.listening {
+    color: #ff4d6d;
+    background: rgba(255, 77, 109, 0.1);
+    border-color: rgba(255, 77, 109, 0.4);
+    animation: micPulse 1s ease-in-out infinite;
+}
+
+@keyframes micPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(255, 77, 109, 0); }
+}
+
+/* Mic status text */
+.mic-status-text { font-size: 0.8rem; }
+
+.pulse-dot {
+    font-size: 0.5rem;
+    animation: pulseOpacity 1s ease-in-out infinite;
+}
+
+@keyframes pulseOpacity {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+/* ===== NEON SEND BUTTON ===== */
 .btn-neon-cyan {
     background: var(--neon-cyan);
     color: var(--bg-dark);
