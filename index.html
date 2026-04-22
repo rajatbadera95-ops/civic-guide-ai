@@ -23,6 +23,16 @@
             <p class="text-muted mb-0">Your objective &amp; neutral election education assistant.</p>
         </div>
 
+        <!-- Nav Tabs -->
+        <div class="app-tabs d-flex gap-2 mb-3">
+            <button class="tab-btn active" id="tab-chat" onclick="switchTab('chat')">
+                <i class="bi bi-chat-dots-fill me-1"></i> AI Assistant
+            </button>
+            <button class="tab-btn" id="tab-locator" onclick="switchTab('locator')">
+                <i class="bi bi-geo-alt-fill me-1"></i> Booth Locator
+            </button>
+        </div>
+
         <!-- Countdown Timer Banner -->
         <div class="countdown-banner glassmorphism mb-3 px-4 py-2 d-flex align-items-center gap-3">
             <i class="bi bi-clock-history text-neon-cyan"></i>
@@ -50,7 +60,7 @@
             </div>
         </div>
 
-        <div class="chat-container glassmorphism d-flex flex-column shadow-lg">
+        <div id="panel-chat" class="chat-container glassmorphism d-flex flex-column shadow-lg">
 
             <!-- Chat Header with Language Selector -->
             <div class="chat-header d-flex align-items-center justify-content-between p-3 border-bottom border-secondary border-opacity-25">
@@ -118,6 +128,73 @@
                 <div id="mic-status" class="mic-status-text text-center mt-1 d-none">
                     <small class="text-neon-cyan"><i class="bi bi-circle-fill pulse-dot me-1"></i>Listening… speak now</small>
                 </div>
+            </div>
+        </div>
+
+        <!-- ===== POLLING BOOTH LOCATOR PANEL ===== -->
+        <div id="panel-locator" class="chat-container glassmorphism d-flex flex-column shadow-lg d-none">
+
+            <!-- Locator Header -->
+            <div class="chat-header d-flex align-items-center p-3 border-bottom border-secondary border-opacity-25">
+                <i class="bi bi-geo-alt-fill fs-2 text-neon-cyan me-3"></i>
+                <div>
+                    <h5 class="mb-0 fw-semibold text-white">Polling Booth Locator</h5>
+                    <small class="text-muted">Find your nearest polling station</small>
+                </div>
+            </div>
+
+            <!-- Search Area -->
+            <div class="p-3 border-bottom border-secondary border-opacity-25">
+                <div class="row g-2">
+                    <div class="col-12 col-sm-5">
+                        <select id="state-select" class="lang-select w-100 form-select">
+                            <option value="">-- Select Your State --</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Assam</option>
+                            <option>Bihar</option>
+                            <option>Delhi</option>
+                            <option>Gujarat</option>
+                            <option>Karnataka</option>
+                            <option>Kerala</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Maharashtra</option>
+                            <option>Punjab</option>
+                            <option>Rajasthan</option>
+                            <option>Tamil Nadu</option>
+                            <option>Telangana</option>
+                            <option>Uttar Pradesh</option>
+                            <option>West Bengal</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <input type="text" id="pin-input" class="form-control glass-input rounded" placeholder="Enter PIN Code" maxlength="6" pattern="[0-9]{6}">
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <button id="locate-btn" class="btn btn-neon-cyan w-100 rounded" onclick="locateBooth()">
+                            <i class="bi bi-search me-1"></i> Search
+                        </button>
+                    </div>
+                </div>
+                <div id="locator-error" class="text-danger small mt-2 d-none">Please select a state and enter a valid 6-digit PIN code.</div>
+            </div>
+
+            <!-- Results Area -->
+            <div class="flex-grow-1 overflow-auto p-3" id="booth-results">
+                <!-- Default Empty State -->
+                <div id="locator-empty" class="d-flex flex-column align-items-center justify-content-center h-100 text-center">
+                    <i class="bi bi-map text-neon-cyan" style="font-size: 3rem; opacity: 0.4;"></i>
+                    <p class="text-muted mt-3 small">Enter your state and PIN code above to find polling booths near you.</p>
+                    <p class="text-muted small mb-0">Results will link directly to your <strong class="text-white">official State Election Commission</strong> website.</p>
+                </div>
+                <!-- Results will be injected here by JS -->
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="p-3 border-top border-secondary border-opacity-25">
+                <small class="text-muted d-flex align-items-center gap-1">
+                    <i class="bi bi-info-circle text-neon-cyan"></i>
+                    This is a demo mockup. For official booth data, always verify on your state's Election Commission portal.
+                </small>
             </div>
         </div>
 

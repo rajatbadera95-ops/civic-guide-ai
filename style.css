@@ -298,3 +298,93 @@ body {
     color: var(--bg-dark);
     transform: translateY(-1px);
 }
+
+/* ===== APP TABS ===== */
+.app-tabs { z-index: 10; }
+
+.tab-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: rgba(255, 255, 255, 0.55);
+    border-radius: 12px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--font-main);
+}
+
+.tab-btn:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+}
+
+.tab-btn.active {
+    background: rgba(0, 255, 204, 0.12);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+}
+
+/* ===== BOOTH RESULT CARDS ===== */
+.booth-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    transition: all 0.25s ease;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.booth-card:hover {
+    border-color: rgba(0, 255, 204, 0.35);
+    box-shadow: 0 4px 20px rgba(0, 255, 204, 0.08);
+    transform: translateY(-2px);
+}
+
+.booth-card .booth-name {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.booth-card .booth-meta {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booth-card .booth-distance {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--neon-cyan);
+    background: rgba(0, 255, 204, 0.08);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    border-radius: 999px;
+    padding: 2px 10px;
+}
+
+.booth-card .btn-map {
+    background: transparent;
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    color: var(--neon-cyan);
+    font-size: 0.78rem;
+    border-radius: 8px;
+    padding: 4px 12px;
+    transition: all 0.2s;
+}
+
+.booth-card .btn-map:hover {
+    background: rgba(0, 255, 204, 0.1);
+    border-color: var(--neon-cyan);
+}
+
+.locator-summary {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 12px;
+}
+
+.locator-summary span { color: var(--neon-cyan); font-weight: 600; }
+
