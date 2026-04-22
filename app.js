@@ -62,8 +62,8 @@ $(document).ready(function() {
         $typingIndicator.removeClass('d-none').addClass('d-flex');
         scrollToBottom();
 
-        // 3. Call the Python Backend
-        fetch('http://localhost:8000/chat', {
+        // 3. Call the Python Backend on Render
+        fetch('https://civic-guide-ai.onrender.com/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
