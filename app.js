@@ -250,7 +250,6 @@ $(document).ready(function () {
     const $chatForm        = $('#chat-form');
     const $userInput       = $('#user-input');
     const $typingIndicator = $('#typing-indicator');
-    const $langSelect      = $('#language-select');
     const $micBtn          = $('#mic-btn');
     const $micStatus       = $('#mic-status');
 
@@ -283,7 +282,7 @@ $(document).ready(function () {
 
     function sendMessage(text) {
         if (!text || !text.trim()) return;
-        const lang = $langSelect.val() || 'English';
+        
         appendUserMessage(text);
         $userInput.val('');
         $typingIndicator.removeClass('d-none').addClass('d-flex');
@@ -292,13 +291,13 @@ $(document).ready(function () {
         fetch('https://civic-guide-ai.onrender.com/chat', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ message: text, language: lang })
+            body:    JSON.stringify({ message: text, language: 'English' })
         })
         .then(r  => { if (!r.ok) throw new Error(); return r.json(); })
         .then(d  => { $typingIndicator.removeClass('d-flex').addClass('d-none'); appendBotMessage(d.reply); })
         .catch(() => {
             $typingIndicator.removeClass('d-flex').addClass('d-none');
-            appendBotMessage("Sorry, I'm having trouble connecting to the server. Please check your connection or wait a moment.");
+            appendBotMessage("Sorry, I'm having trouble connecting to the server. (If you haven't used the bot recently, the server may be waking up—which takes about 50 seconds. Please try again in a minute!)");
         });
     }
 
