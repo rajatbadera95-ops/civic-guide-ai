@@ -21,26 +21,7 @@ window.addEventListener('scroll', () => {
     document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 10);
 });
 
-/* =============== THEME TOGGLE =============== */
-let isDayTheme = false;
 
-function toggleTheme() {
-    isDayTheme = !isDayTheme;
-    document.body.classList.toggle('day-theme', isDayTheme);
-    const icon = document.getElementById('theme-icon');
-    icon.className = isDayTheme ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
-    localStorage.setItem('civicTheme', isDayTheme ? 'day' : 'night');
-}
-
-// Restore saved theme
-(function() {
-    if (localStorage.getItem('civicTheme') === 'day') {
-        isDayTheme = true;
-        document.body.classList.add('day-theme');
-        const icon = document.getElementById('theme-icon');
-        if (icon) icon.className = 'bi bi-sun-fill';
-    }
-})();
 
 /* =============== VOTER ID WIDGET =============== */
 function voterIdAnswer(hasId) {
