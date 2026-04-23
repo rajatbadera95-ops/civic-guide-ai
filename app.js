@@ -686,38 +686,8 @@ function fireConfetti() {
     draw();
 }
 
-/* ==============================================
-   MULTI-LANGUAGE FULL UI  (i18n)
-============================================== */
-function applyLanguage(lang) {
-    if (typeof translations === 'undefined') return;
-    const t = translations[lang] || translations['English'];
-    
-    // Apply all data-i18n elements
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key]) {
-            el.textContent = t[key];
-        }
-    });
-
-    // Chat placeholder
-    const inp = document.getElementById('user-input');
-    if (inp && t.chat_placeholder) inp.placeholder = t.chat_placeholder;
-
-    // Voter ID Title with formatting
-    const vt = document.querySelector('.vid-title');
-    if (vt && t.vid_title) {
-        vt.innerHTML = t.vid_title.replace('Voter ID', '<span class="text-neon">Voter ID?</span>');
-    }
-}
-
-// Hook into language select change
+// Hook into DOM load
 document.addEventListener('DOMContentLoaded', () => {
-    const ls = document.getElementById('language-select');
-    if (ls) {
-        ls.addEventListener('change', e => applyLanguage(e.target.value));
-    }
     // Init results table
     renderResultsTable('');
 });
