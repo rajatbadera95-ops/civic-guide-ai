@@ -689,70 +689,27 @@ function fireConfetti() {
 /* ==============================================
    MULTI-LANGUAGE FULL UI  (i18n)
 ============================================== */
-const translations = {
-    English: {
-        nav_info:'Info', nav_askai:'Ask AI', nav_eligible:'Eligible?',
-        nav_timeline:'Timeline', nav_locator:'Locator', nav_results:'Results', nav_glossary:'Glossary',
-        hero_title:'Your Vote. Your Power.',
-        chat_placeholder:'Ask about elections, voting, or registration...',
-        vid_title:'Do you have a Voter ID?',
-        vid_yes:'Yes, I have it', vid_no:"No, I don't",
-    },
-    Hindi: {
-        nav_info:'जानकारी', nav_askai:'AI से पूछें', nav_eligible:'पात्र?',
-        nav_timeline:'समयरेखा', nav_locator:'बूथ खोजें', nav_results:'परिणाम', nav_glossary:'शब्दकोश',
-        hero_title:'आपका वोट। आपकी शक्ति।',
-        chat_placeholder:'चुनाव, मतदान, या पंजीकरण के बारे में पूछें...',
-        vid_title:'क्या आपके पास मतदाता पहचान पत्र है?',
-        vid_yes:'हाँ, मेरे पास है', vid_no:'नहीं, मेरे पास नहीं है',
-    },
-    Bengali: {
-        nav_info:'তথ্য', nav_askai:'AI জিজ্ঞাসা', nav_eligible:'যোগ্য?',
-        nav_timeline:'সময়রেখা', nav_locator:'বুথ খুঁজুন', nav_results:'ফলাফল', nav_glossary:'শব্দকোষ',
-        hero_title:'আপনার ভোট। আপনার শক্তি।',
-        chat_placeholder:'নির্বাচন, ভোট, বা নিবন্ধন সম্পর্কে জিজ্ঞাসা করুন...',
-        vid_title:'আপনার কি ভোটার আইডি আছে?',
-        vid_yes:'হ্যাঁ, আছে', vid_no:'না, নেই',
-    },
-    Tamil: {
-        nav_info:'தகவல்', nav_askai:'AI கேளுங்கள்', nav_eligible:'தகுதியா?',
-        nav_timeline:'காலவரிசை', nav_locator:'சாவடி கண்டறி', nav_results:'முடிவுகள்', nav_glossary:'சொற்களஞ்சியம்',
-        hero_title:'உங்கள் வோட்டு. உங்கள் சக்தி.',
-        chat_placeholder:'தேர்தல், வாக்களிப்பு பற்றி கேளுங்கள்...',
-        vid_title:'உங்களிடம் வாக்காளர் அட்டை உள்ளதா?',
-        vid_yes:'ஆம், உள்ளது', vid_no:'இல்லை',
-    },
-    Telugu: {
-        nav_info:'సమాచారం', nav_askai:'AI అడగండి', nav_eligible:'అర్హత?',
-        nav_timeline:'కాలరేఖ', nav_locator:'బూత్ కనుగొనండి', nav_results:'ఫలితాలు', nav_glossary:'నిఘంటువు',
-        hero_title:'మీ ఓటు. మీ శక్తి.',
-        chat_placeholder:'ఎన్నికలు, ఓటింగ్ గురించి అడగండి...',
-        vid_title:'మీకు ఓటర్ ID ఉందా?',
-        vid_yes:'అవును, ఉంది', vid_no:'లేదు',
-    },
-    Marathi: {
-        nav_info:'माहिती', nav_askai:'AI विचारा', nav_eligible:'पात्र?',
-        nav_timeline:'कालरेषा', nav_locator:'बूथ शोधा', nav_results:'निकाल', nav_glossary:'शब्दकोश',
-        hero_title:'तुमचा मत. तुमची शक्ती.',
-        chat_placeholder:'निवडणूक, मतदान याबद्दल विचारा...',
-        vid_title:'तुमच्याकडे मतदार ओळखपत्र आहे का?',
-        vid_yes:'होय, आहे', vid_no:'नाही',
-    },
-};
-
 function applyLanguage(lang) {
+    if (typeof translations === 'undefined') return;
     const t = translations[lang] || translations['English'];
+    
     // Apply all data-i18n elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key]) el.textContent = t[key];
+        if (t[key]) {
+            el.textContent = t[key];
+        }
     });
-    // Chat placeholder
+
+    // Special cases that don't easily fit into textContent
     const inp = document.getElementById('user-input');
-    if (inp && t.chat_placeholder) inp.placeholder = t.chat_placeholder;
-    // Voter ID title
+    if (inp && t['auto_key_1']) inp.placeholder = "Ask about elections, voting, or registration..."; // Fallback
+
+    // Voter ID Title with formatting
     const vt = document.querySelector('.vid-title');
-    if (vt && t.vid_title) vt.innerHTML = t.vid_title.replace('Voter ID', '<span class="text-neon">Voter ID?</span>');
+    if (vt) {
+        vt.innerHTML = (t['auto_key_2'] || "Do you have a Voter ID?").replace('Voter ID', '<span class="text-neon">Voter ID</span>');
+    }
 }
 
 // Hook into language select change

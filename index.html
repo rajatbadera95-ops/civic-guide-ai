@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Civic Guide AI – Your Election Education Hub</title>
     <meta name="description" content="India's free, neutral AI-powered election education platform. Learn about voter registration, election terms, polling booths, and your civic rights.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -23,13 +21,13 @@
 
         <!-- Nav Links -->
         <div class="nav-links" id="nav-links">
-            <a class="nav-link active" id="nav-home"        onclick="navigate('home')">        <i class="bi bi-house-fill"></i>               <span data-i18n="nav_info">Info</span>       </a>
-            <a class="nav-link"        id="nav-chat"        onclick="navigate('chat')">        <i class="bi bi-robot"></i>                    <span data-i18n="nav_askai">Ask AI</span>    </a>
-            <a class="nav-link"        id="nav-eligibility" onclick="navigate('eligibility')"> <i class="bi bi-clipboard2-check-fill"></i>     <span data-i18n="nav_eligible">Eligible?</span></a>
-            <a class="nav-link"        id="nav-timeline"    onclick="navigate('timeline')">    <i class="bi bi-calendar3"></i>                <span data-i18n="nav_timeline">Timeline</span></a>
-            <a class="nav-link"        id="nav-locator"     onclick="navigate('locator')">     <i class="bi bi-geo-alt-fill"></i>             <span data-i18n="nav_locator">Locator</span> </a>
-            <a class="nav-link"        id="nav-results"     onclick="navigate('results')">     <i class="bi bi-bar-chart-fill"></i>           <span data-i18n="nav_results">Results</span> </a>
-            <a class="nav-link"        id="nav-glossary"    onclick="navigate('glossary')">    <i class="bi bi-book-half"></i>                <span data-i18n="nav_glossary">Glossary</span></a>
+            <a class="nav-link active" id="nav-home" onclick="navigate('home')">        <i class="bi bi-house-fill"></i>               <span data-i18n="nav_info">Info</span>       </a>
+            <a class="nav-link" id="nav-chat" onclick="navigate('chat')">        <i class="bi bi-robot"></i>                    <span data-i18n="nav_askai">Ask AI</span>    </a>
+            <a class="nav-link" id="nav-eligibility" onclick="navigate('eligibility')"> <i class="bi bi-clipboard2-check-fill"></i>     <span data-i18n="nav_eligible">Eligible?</span></a>
+            <a class="nav-link" id="nav-timeline" onclick="navigate('timeline')">    <i class="bi bi-calendar3"></i>                <span data-i18n="nav_timeline">Timeline</span></a>
+            <a class="nav-link" id="nav-locator" onclick="navigate('locator')">     <i class="bi bi-geo-alt-fill"></i>             <span data-i18n="nav_locator">Locator</span> </a>
+            <a class="nav-link" id="nav-results" onclick="navigate('results')">     <i class="bi bi-bar-chart-fill"></i>           <span data-i18n="nav_results">Results</span> </a>
+            <a class="nav-link" id="nav-glossary" onclick="navigate('glossary')">    <i class="bi bi-book-half"></i>                <span data-i18n="nav_glossary">Glossary</span></a>
         </div>
 
         <!-- Right Controls -->
@@ -69,9 +67,9 @@
     <div class="hero-section">
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content text-center">
-            <div class="hero-badge"><i class="bi bi-patch-check-fill me-1"></i>100% Neutral & Non-Partisan</div>
+            <div class="hero-badge"><i class="bi bi-patch-check-fill me-1"></i>100% Neutral &amp; Non-Partisan</div>
             <h1 class="hero-title">Your Vote. <span class="text-neon">Your Power.</span></h1>
-            <p class="hero-subtitle">India's free AI-powered election education platform. Understand your rights, learn the process, and make an informed choice.</p>
+            <p class="hero-subtitle" data-i18n="auto_key_1">India's free AI-powered election education platform. Understand your rights, learn the process, and make an informed choice.</p>
             <div class="hero-actions">
                 <button class="btn-hero-primary" onclick="navigate('chat')"><i class="bi bi-robot me-2"></i>Ask the AI</button>
                 <button class="btn-hero-secondary" onclick="navigate('locator')"><i class="bi bi-geo-alt me-2"></i>Find Polling Booth</button>
@@ -84,27 +82,27 @@
         <div class="slogan-quote-wrap">
             <div class="slogan-big-quote">"</div>
             <div class="slogan-rotator" id="slogan-rotator">
-                <p class="slogan-active" id="slogan-text">Your vote is your voice — use it.</p>
+                <p class="slogan-active" id="slogan-text" data-i18n="auto_key_5">Your vote is your voice — use it.</p>
             </div>
             <div class="slogan-dots" id="slogan-dots"></div>
         </div>
         <div class="slogan-ticker-strip">
             <div class="slogan-fade-left"></div>
             <div class="slogan-ticker-track" id="slogan-ticker">
-                <span>🗳️ Every vote matters</span><span class="sep">◆</span>
-                <span>💡 One vote can change history</span><span class="sep">◆</span>
-                <span>🔥 Don't let silence decide your future</span><span class="sep">◆</span>
-                <span>🇮🇳 Democracy needs you</span><span class="sep">◆</span>
-                <span>🌟 The most powerful weapon is a ballot</span><span class="sep">◆</span>
-                <span>⚡ Every single vote counts</span><span class="sep">◆</span>
-                <span>🏛️ Choose your leaders wisely</span><span class="sep">◆</span>
-                <span>🗳️ Every vote matters</span><span class="sep">◆</span>
-                <span>💡 One vote can change history</span><span class="sep">◆</span>
-                <span>🔥 Don't let silence decide your future</span><span class="sep">◆</span>
-                <span>🇮🇳 Democracy needs you</span><span class="sep">◆</span>
-                <span>🌟 The most powerful weapon is a ballot</span><span class="sep">◆</span>
-                <span>⚡ Every single vote counts</span><span class="sep">◆</span>
-                <span>🏛️ Choose your leaders wisely</span><span class="sep">◆</span>
+                <span data-i18n="auto_key_6">🗳️ Every vote matters</span><span class="sep" data-i18n="auto_key_7">◆</span>
+                <span data-i18n="auto_key_8">💡 One vote can change history</span><span class="sep" data-i18n="auto_key_9">◆</span>
+                <span data-i18n="auto_key_10">🔥 Don't let silence decide your future</span><span class="sep" data-i18n="auto_key_11">◆</span>
+                <span data-i18n="auto_key_12">🇮🇳 Democracy needs you</span><span class="sep" data-i18n="auto_key_13">◆</span>
+                <span data-i18n="auto_key_14">🌟 The most powerful weapon is a ballot</span><span class="sep" data-i18n="auto_key_15">◆</span>
+                <span data-i18n="auto_key_16">⚡ Every single vote counts</span><span class="sep" data-i18n="auto_key_17">◆</span>
+                <span data-i18n="auto_key_18">🏛️ Choose your leaders wisely</span><span class="sep" data-i18n="auto_key_19">◆</span>
+                <span data-i18n="auto_key_20">🗳️ Every vote matters</span><span class="sep" data-i18n="auto_key_21">◆</span>
+                <span data-i18n="auto_key_22">💡 One vote can change history</span><span class="sep" data-i18n="auto_key_23">◆</span>
+                <span data-i18n="auto_key_24">🔥 Don't let silence decide your future</span><span class="sep" data-i18n="auto_key_25">◆</span>
+                <span data-i18n="auto_key_26">🇮🇳 Democracy needs you</span><span class="sep" data-i18n="auto_key_27">◆</span>
+                <span data-i18n="auto_key_28">🌟 The most powerful weapon is a ballot</span><span class="sep" data-i18n="auto_key_29">◆</span>
+                <span data-i18n="auto_key_30">⚡ Every single vote counts</span><span class="sep" data-i18n="auto_key_31">◆</span>
+                <span data-i18n="auto_key_32">🏛️ Choose your leaders wisely</span><span class="sep" data-i18n="auto_key_33">◆</span>
             </div>
             <div class="slogan-fade-right"></div>
         </div>
@@ -241,7 +239,7 @@
             </div>
             <div class="date-card">
                 <div class="date-val">Oct – Nov 2024</div>
-                <div class="date-name">Maharashtra & Haryana State Elections</div>
+                <div class="date-name">Maharashtra &amp; Haryana State Elections</div>
             </div>
             <div class="date-card">
                 <div class="date-val">Jan 1 (Annual)</div>
@@ -273,13 +271,13 @@
             </div>
             <div class="quote-card" style="--delay:0.2s">
                 <div class="quote-mark">"</div>
-                <p class="quote-text">The vote is the most powerful instrument ever devised by man for breaking down injustice.</p>
-                <div class="quote-attr">— Lyndon B. Johnson</div>
+                <p class="quote-text" data-i18n="auto_key_34">The vote is the most powerful instrument ever devised by man for breaking down injustice.</p>
+                <div class="quote-attr" data-i18n="auto_key_37">— Lyndon B. Johnson</div>
             </div>
             <div class="quote-card" style="--delay:0.3s">
                 <div class="quote-mark">"</div>
-                <p class="quote-text">A nation of sheep will be governed by wolves. Your vote is your armor against silence.</p>
-                <div class="quote-attr">— Civic Wisdom</div>
+                <p class="quote-text" data-i18n="auto_key_35">A nation of sheep will be governed by wolves. Your vote is your armor against silence.</p>
+                <div class="quote-attr" data-i18n="auto_key_38">— Civic Wisdom</div>
             </div>
             <div class="quote-card" style="--delay:0.4s">
                 <div class="quote-mark">"</div>
@@ -288,8 +286,8 @@
             </div>
             <div class="quote-card" style="--delay:0.5s">
                 <div class="quote-mark">"</div>
-                <p class="quote-text">The ballot is stronger than the bullet. Every peaceful vote makes bullets unnecessary.</p>
-                <div class="quote-attr">— Abraham Lincoln (adapted)</div>
+                <p class="quote-text" data-i18n="auto_key_36">The ballot is stronger than the bullet. Every peaceful vote makes bullets unnecessary.</p>
+                <div class="quote-attr" data-i18n="auto_key_39">— Abraham Lincoln (adapted)</div>
             </div>
         </div>
     </div>
@@ -297,8 +295,8 @@
     <!-- CTA Banner -->
     <div class="cta-banner">
         <div class="cta-content">
-            <h3>Still have questions?</h3>
-            <p>Our AI assistant can explain any election term or process in plain language — in your own language!</p>
+            <h3 data-i18n="auto_key_40">Still have questions?</h3>
+            <p data-i18n="auto_key_41">Our AI assistant can explain any election term or process in plain language — in your own language!</p>
             <button class="btn-hero-primary" onclick="navigate('chat')"><i class="bi bi-chat-dots-fill me-2"></i>Chat with AI Now</button>
         </div>
     </div>
@@ -309,7 +307,7 @@
         <div class="pledge-inner">
             <div class="pledge-icon">🗳️</div>
             <h2 class="pledge-title">Take the <span class="text-neon">Voter's Pledge</span></h2>
-            <p class="pledge-sub">Join millions of Indians who commit to making their voice heard. Democracy begins with you.</p>
+            <p class="pledge-sub" data-i18n="auto_key_42">Join millions of Indians who commit to making their voice heard. Democracy begins with you.</p>
             <div id="pledge-btn-wrap">
                 <button class="btn-pledge" id="pledge-btn" onclick="takePledge()">
                     <i class="bi bi-patch-check-fill me-2"></i>I Pledge to Vote
@@ -336,7 +334,7 @@
     </div>
 
     <footer class="site-footer">
-        <p>Civic Guide AI &copy; 2026 &nbsp;·&nbsp; Designed for strictly objective and educational purposes &nbsp;·&nbsp; Not affiliated with any political party or government body.</p>
+        <p>Civic Guide AI © 2026 &nbsp;·&nbsp; Designed for strictly objective and educational purposes &nbsp;·&nbsp; Not affiliated with any political party or government body.</p>
     </footer>
 </section>
 
@@ -349,17 +347,17 @@
             <div class="vid-card glassmorphism">
                 <div class="vid-icon"><i class="bi bi-person-vcard-fill"></i></div>
                 <h5 class="vid-title">Do you have a <span class="text-neon">Voter ID?</span></h5>
-                <p class="vid-sub">Your EPIC card is required to vote at a polling booth.</p>
+                <p class="vid-sub" data-i18n="auto_key_83">Your EPIC card is required to vote at a polling booth.</p>
 
                 <div id="vid-question">
                     <button class="vid-btn yes" onclick="voterIdAnswer(true)"><i class="bi bi-check-circle-fill me-2"></i>Yes, I have it</button>
-                    <button class="vid-btn no"  onclick="voterIdAnswer(false)"><i class="bi bi-x-circle-fill me-2"></i>No, I don't</button>
+                    <button class="vid-btn no" onclick="voterIdAnswer(false)"><i class="bi bi-x-circle-fill me-2"></i>No, I don't</button>
                 </div>
 
                 <!-- Answer: YES -->
                 <div id="vid-yes" class="vid-answer d-none">
                     <div class="vid-check"><i class="bi bi-patch-check-fill"></i> You're all set!</div>
-                    <p class="vid-info">Make sure your name appears on the electoral roll. Verify it on the official ECI portal before election day.</p>
+                    <p class="vid-info" data-i18n="auto_key_84">Make sure your name appears on the electoral roll. Verify it on the official ECI portal before election day.</p>
                     <a href="https://voters.eci.gov.in" target="_blank" class="vid-link"><i class="bi bi-box-arrow-up-right me-1"></i>Verify on ECI Portal</a>
                     <button class="vid-reset" onclick="voterIdReset()">↩ Change answer</button>
                 </div>
@@ -367,7 +365,7 @@
                 <!-- Answer: NO -->
                 <div id="vid-no" class="vid-answer d-none">
                     <div class="vid-alert"><i class="bi bi-exclamation-triangle-fill me-1"></i>Register Now — It's Free!</div>
-                    <p class="vid-info">Getting your Voter ID is quick and free. Follow these steps:</p>
+                    <p class="vid-info" data-i18n="auto_key_85">Getting your Voter ID is quick and free. Follow these steps:</p>
                     <ol class="vid-steps">
                         <li>Visit the official ECI Voter Portal below</li>
                         <li>Click <strong>"New Registration"</strong> → Fill <strong>Form 6</strong></li>
@@ -386,7 +384,7 @@
         <div class="chat-main-col">
             <div class="chat-page-header text-center mb-4">
                 <h2 class="fw-bold text-white title-glow">Ask the <span class="text-neon">AI Assistant</span></h2>
-                <p class="text-muted">Ask anything about elections, voter registration, or civic rights. Get a neutral, factual answer.</p>
+                <p class="text-muted" data-i18n="auto_key_43">Ask anything about elections, voter registration, or civic rights. Get a neutral, factual answer.</p>
             </div>
 
             <div class="chat-container glassmorphism d-flex flex-column shadow-lg" id="panel-chat">
@@ -398,7 +396,7 @@
                         <span class="status-indicator position-absolute bg-success rounded-circle"></span>
                     </div>
                     <div>
-                        <h5 class="mb-0 fw-semibold text-white">CivicBot</h5>
+                        <h5 class="mb-0 fw-semibold text-white" data-i18n="auto_key_82">CivicBot</h5>
                         <small class="text-success fw-bold">Online · Neutral · Non-Partisan</small>
                     </div>
                 </div>
@@ -434,7 +432,7 @@
                         <button type="button" id="mic-btn" class="btn btn-mic rounded-start-pill px-3" title="Click to speak">
                             <i class="bi bi-mic-fill"></i>
                         </button>
-                        <input type="text" id="user-input" class="form-control glass-input py-2 px-4 shadow-none" placeholder="Ask about elections, voting, or registration..." autocomplete="off" required>
+                        <input type="text" id="user-input" class="form-control glass-input py-2 px-4 shadow-none" placeholder="Ask about elections, voting, or registration..." autocomplete="off" required="">
                         <button class="btn btn-neon-cyan rounded-end-pill px-4" type="submit" id="send-btn">
                             <i class="bi bi-send-fill fs-5"></i>
                         </button>
@@ -455,7 +453,7 @@
     <div class="page-wrapper">
         <div class="text-center mb-4">
             <h2 class="fw-bold text-white title-glow">Polling <span class="text-neon">Booth Locator</span></h2>
-            <p class="text-muted">Find your nearest polling station and official state election portal</p>
+            <p class="text-muted" data-i18n="auto_key_44">Find your nearest polling station and official state election portal</p>
         </div>
 
         <div class="chat-container glassmorphism d-flex flex-column shadow-lg" id="panel-locator">
@@ -463,7 +461,7 @@
             <div class="p-4 border-bottom border-secondary border-opacity-25">
                 <div class="row g-3">
                     <div class="col-12 col-sm-5">
-                        <label class="form-label text-muted small">Select Your State</label>
+                        <label class="form-label text-muted small" data-i18n="auto_key_45">Select Your State</label>
                         <select id="state-select" class="lang-select w-100 form-select">
                             <option value="">-- Select State --</option>
                             <option>Andhra Pradesh</option><option>Assam</option><option>Bihar</option>
@@ -474,7 +472,7 @@
                         </select>
                     </div>
                     <div class="col-12 col-sm-4">
-                        <label class="form-label text-muted small">Your PIN Code</label>
+                        <label class="form-label text-muted small" data-i18n="auto_key_46">Your PIN Code</label>
                         <input type="text" id="pin-input" class="form-control glass-input rounded" placeholder="e.g. 400001" maxlength="6" pattern="[0-9]{6}">
                     </div>
                     <div class="col-12 col-sm-3 d-flex align-items-end">
@@ -490,8 +488,8 @@
             <div class="flex-grow-1 overflow-auto p-4" id="booth-results">
                 <div id="locator-empty" class="d-flex flex-column align-items-center justify-content-center h-100 text-center py-5">
                     <i class="bi bi-map text-neon-cyan" style="font-size:3.5rem;opacity:0.35;"></i>
-                    <p class="text-muted mt-3">Enter your state and PIN code to find nearby polling booths.</p>
-                    <p class="text-muted small">Results link to official State Election Commission portals.</p>
+                    <p class="text-muted mt-3" data-i18n="auto_key_47">Enter your state and PIN code to find nearby polling booths.</p>
+                    <p class="text-muted small" data-i18n="auto_key_48">Results link to official State Election Commission portals.</p>
                 </div>
             </div>
 
@@ -508,7 +506,7 @@
     <div class="page-wrapper">
         <div class="text-center mb-4">
             <h2 class="fw-bold text-white title-glow">Election <span class="text-neon">Glossary</span></h2>
-            <p class="text-muted">Decode complex election terms in plain, simple language</p>
+            <p class="text-muted" data-i18n="auto_key_49">Decode complex election terms in plain, simple language</p>
         </div>
 
         <!-- Search -->
@@ -528,7 +526,7 @@
     <div class="page-wrapper">
         <div class="text-center mb-5">
             <h2 class="fw-bold text-white title-glow">Am I <span class="text-neon">Eligible to Vote?</span></h2>
-            <p class="text-muted">Answer 5 quick questions to find out if you can vote in Indian elections</p>
+            <p class="text-muted" data-i18n="auto_key_50">Answer 5 quick questions to find out if you can vote in Indian elections</p>
         </div>
 
         <div class="wizard-wrap glassmorphism" id="eligibility-wizard">
@@ -539,61 +537,61 @@
 
             <!-- Step 1 -->
             <div class="wizard-step active" id="estep-1">
-                <div class="step-num">Step 1 of 5</div>
+                <div class="step-num" data-i18n="auto_key_54">Step 1 of 5</div>
                 <div class="step-icon">🇮🇳</div>
-                <h4 class="step-q">Are you a citizen of India?</h4>
-                <p class="step-hint">Only Indian citizens are allowed to vote in Indian elections.</p>
+                <h4 class="step-q" data-i18n="auto_key_59">Are you a citizen of India?</h4>
+                <p class="step-hint" data-i18n="auto_key_64">Only Indian citizens are allowed to vote in Indian elections.</p>
                 <div class="step-btns">
-                    <button class="step-btn yes" onclick="wizardNext(1, true)">✅ Yes</button>
-                    <button class="step-btn no"  onclick="wizardNext(1, false)">❌ No</button>
+                    <button class="step-btn yes" onclick="wizardNext(1, true)" data-i18n="auto_key_69">✅ Yes</button>
+                    <button class="step-btn no" onclick="wizardNext(1, false)" data-i18n="auto_key_70">❌ No</button>
                 </div>
             </div>
 
             <!-- Step 2 -->
             <div class="wizard-step" id="estep-2">
-                <div class="step-num">Step 2 of 5</div>
+                <div class="step-num" data-i18n="auto_key_55">Step 2 of 5</div>
                 <div class="step-icon">🎂</div>
-                <h4 class="step-q">Are you 18 years of age or older?</h4>
-                <p class="step-hint">The minimum voting age in India is 18, as per Article 326 of the Constitution.</p>
+                <h4 class="step-q" data-i18n="auto_key_60">Are you 18 years of age or older?</h4>
+                <p class="step-hint" data-i18n="auto_key_65">The minimum voting age in India is 18, as per Article 326 of the Constitution.</p>
                 <div class="step-btns">
-                    <button class="step-btn yes" onclick="wizardNext(2, true)">✅ Yes, I'm 18+</button>
-                    <button class="step-btn no"  onclick="wizardNext(2, false)">❌ No, I'm under 18</button>
+                    <button class="step-btn yes" onclick="wizardNext(2, true)" data-i18n="auto_key_71">✅ Yes, I'm 18+</button>
+                    <button class="step-btn no" onclick="wizardNext(2, false)" data-i18n="auto_key_72">❌ No, I'm under 18</button>
                 </div>
             </div>
 
             <!-- Step 3 -->
             <div class="wizard-step" id="estep-3">
-                <div class="step-num">Step 3 of 5</div>
+                <div class="step-num" data-i18n="auto_key_56">Step 3 of 5</div>
                 <div class="step-icon">🏠</div>
-                <h4 class="step-q">Are you ordinarily resident in a constituency?</h4>
-                <p class="step-hint">You must have a permanent home or reside habitually in the place where you want to register to vote.</p>
+                <h4 class="step-q" data-i18n="auto_key_61">Are you ordinarily resident in a constituency?</h4>
+                <p class="step-hint" data-i18n="auto_key_66">You must have a permanent home or reside habitually in the place where you want to register to vote.</p>
                 <div class="step-btns">
-                    <button class="step-btn yes" onclick="wizardNext(3, true)">✅ Yes</button>
-                    <button class="step-btn no"  onclick="wizardNext(3, false)">❌ No fixed address</button>
+                    <button class="step-btn yes" onclick="wizardNext(3, true)" data-i18n="auto_key_73">✅ Yes</button>
+                    <button class="step-btn no" onclick="wizardNext(3, false)" data-i18n="auto_key_74">❌ No fixed address</button>
                 </div>
             </div>
 
             <!-- Step 4 -->
             <div class="wizard-step" id="estep-4">
-                <div class="step-num">Step 4 of 5</div>
+                <div class="step-num" data-i18n="auto_key_57">Step 4 of 5</div>
                 <div class="step-icon">⚖️</div>
-                <h4 class="step-q">Have you been declared mentally incapacitated by a court?</h4>
-                <p class="step-hint">Persons declared of unsound mind by a competent court are not eligible under Section 16 of the RPA, 1950.</p>
+                <h4 class="step-q" data-i18n="auto_key_62">Have you been declared mentally incapacitated by a court?</h4>
+                <p class="step-hint" data-i18n="auto_key_67">Persons declared of unsound mind by a competent court are not eligible under Section 16 of the RPA, 1950.</p>
                 <div class="step-btns">
-                    <button class="step-btn yes" onclick="wizardNext(4, true)">❌ Yes, I have</button>
-                    <button class="step-btn no"  onclick="wizardNext(4, false)">✅ No, I have not</button>
+                    <button class="step-btn yes" onclick="wizardNext(4, true)" data-i18n="auto_key_75">❌ Yes, I have</button>
+                    <button class="step-btn no" onclick="wizardNext(4, false)" data-i18n="auto_key_76">✅ No, I have not</button>
                 </div>
             </div>
 
             <!-- Step 5 -->
             <div class="wizard-step" id="estep-5">
-                <div class="step-num">Step 5 of 5</div>
+                <div class="step-num" data-i18n="auto_key_58">Step 5 of 5</div>
                 <div class="step-icon">🔒</div>
-                <h4 class="step-q">Are you currently serving a prison sentence of 2+ years?</h4>
-                <p class="step-hint">Persons convicted and sentenced to imprisonment for 2 or more years are disqualified from voting during that period.</p>
+                <h4 class="step-q" data-i18n="auto_key_63">Are you currently serving a prison sentence of 2+ years?</h4>
+                <p class="step-hint" data-i18n="auto_key_68">Persons convicted and sentenced to imprisonment for 2 or more years are disqualified from voting during that period.</p>
                 <div class="step-btns">
-                    <button class="step-btn yes" onclick="wizardNext(5, true)">❌ Yes</button>
-                    <button class="step-btn no"  onclick="wizardNext(5, false)">✅ No</button>
+                    <button class="step-btn yes" onclick="wizardNext(5, true)" data-i18n="auto_key_77">❌ Yes</button>
+                    <button class="step-btn no" onclick="wizardNext(5, false)" data-i18n="auto_key_78">✅ No</button>
                 </div>
             </div>
 
@@ -601,18 +599,18 @@
             <div class="wizard-step" id="estep-result">
                 <div id="result-eligible" class="wizard-result eligible d-none">
                     <div class="result-icon">🎉</div>
-                    <h3>You ARE Eligible to Vote!</h3>
-                    <p>Congratulations! You meet all the legal requirements to vote in Indian elections. Make sure you're registered on the Electoral Roll.</p>
+                    <h3 data-i18n="auto_key_79">You ARE Eligible to Vote!</h3>
+                    <p data-i18n="auto_key_81">Congratulations! You meet all the legal requirements to vote in Indian elections. Make sure you're registered on the Electoral Roll.</p>
                     <div class="result-actions">
-                        <a href="https://voters.eci.gov.in" target="_blank" class="btn-hero-primary" style="text-decoration:none;display:inline-block">📋 Register to Vote</a>
-                        <button class="btn-hero-secondary" onclick="wizardReset()">↩ Start Over</button>
+                        <a href="https://voters.eci.gov.in" target="_blank" class="btn-hero-primary" style="text-decoration:none;display:inline-block" data-i18n="auto_key_2">📋 Register to Vote</a>
+                        <button class="btn-hero-secondary" onclick="wizardReset()" data-i18n="auto_key_3">↩ Start Over</button>
                     </div>
                 </div>
                 <div id="result-not-eligible" class="wizard-result not-eligible d-none">
                     <div class="result-icon">❌</div>
-                    <h3>You Are Not Currently Eligible</h3>
+                    <h3 data-i18n="auto_key_80">You Are Not Currently Eligible</h3>
                     <p id="result-reason" class="text-muted"></p>
-                    <button class="btn-hero-secondary" onclick="wizardReset()">↩ Try Again</button>
+                    <button class="btn-hero-secondary" onclick="wizardReset()" data-i18n="auto_key_4">↩ Try Again</button>
                 </div>
             </div>
         </div>
@@ -624,14 +622,14 @@
     <div class="page-wrapper" style="max-width:960px">
         <div class="text-center mb-5">
             <h2 class="fw-bold text-white title-glow">India's <span class="text-neon">Election Timeline</span></h2>
-            <p class="text-muted">Every Indian General Election from Independence to today — scroll to explore</p>
+            <p class="text-muted" data-i18n="auto_key_51">Every Indian General Election from Independence to today — scroll to explore</p>
         </div>
         <div class="timeline-scroll-hint"><i class="bi bi-arrow-left-right me-1"></i> Scroll to explore all 18 elections</div>
         <div class="h-timeline-outer">
             <div class="h-timeline" id="h-timeline"><!-- Injected by JS --></div>
         </div>
         <div class="timeline-detail-card glassmorphism" id="timeline-detail">
-            <p class="text-muted text-center" style="margin:0">👆 Click on any election above to see details</p>
+            <p class="text-muted text-center" style="margin:0" data-i18n="auto_key_52">👆 Click on any election above to see details</p>
         </div>
     </div>
 </section>
@@ -640,8 +638,8 @@
 <section class="page" id="page-results">
     <div class="page-wrapper" style="max-width:960px">
         <div class="text-center mb-4">
-            <h2 class="fw-bold text-white title-glow">Constituency <span class="text-neon">Lookup & Results</span></h2>
-            <p class="text-muted">Find your constituency by PIN code and explore past election results</p>
+            <h2 class="fw-bold text-white title-glow">Constituency <span class="text-neon">Lookup &amp; Results</span></h2>
+            <p class="text-muted" data-i18n="auto_key_53">Find your constituency by PIN code and explore past election results</p>
         </div>
 
         <!-- Constituency Lookup -->
@@ -669,6 +667,7 @@
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="i18n_data.js"></script>
 <script src="app.js"></script>
-</body>
-</html>
+
+</body></html>
