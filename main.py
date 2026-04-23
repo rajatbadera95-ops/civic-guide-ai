@@ -72,8 +72,8 @@ async def chat_endpoint(request: ChatRequest):
         # Build the language-aware system prompt
         system_prompt = BASE_SYSTEM_PROMPT.format(language=language)
 
-        # Using gemini-2.0-flash for high free-tier quota (1500 req/day)
-        model = genai.GenerativeModel('gemini-2.0-flash')
+        # Upgrading the model per user request
+        model = genai.GenerativeModel('gemini-pro')
 
         # Combine the system prompt, static data, and user's message
         full_prompt = (
