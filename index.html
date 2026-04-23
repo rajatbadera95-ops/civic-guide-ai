@@ -68,11 +68,11 @@
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content text-center">
             <div class="hero-badge"><i class="bi bi-patch-check-fill me-1"></i>100% Neutral &amp; Non-Partisan</div>
-            <h1 class="hero-title">Your Vote. <span class="text-neon">Your Power.</span></h1>
+            <h1 class="hero-title"><span data-i18n="hero_title_p1">Your Vote.</span> <span class="text-neon" data-i18n="hero_title_p2">Your Power.</span></h1>
             <p class="hero-subtitle" data-i18n="auto_key_1">India's free AI-powered election education platform. Understand your rights, learn the process, and make an informed choice.</p>
             <div class="hero-actions">
-                <button class="btn-hero-primary" onclick="navigate('chat')"><i class="bi bi-robot me-2"></i>Ask the AI</button>
-                <button class="btn-hero-secondary" onclick="navigate('locator')"><i class="bi bi-geo-alt me-2"></i>Find Polling Booth</button>
+                <button class="btn-hero-primary" onclick="navigate('chat')"><i class="bi bi-robot me-2"></i><span data-i18n="btn_ask_ai">Ask the AI</span></button>
+                <button class="btn-hero-secondary" onclick="navigate('locator')"><i class="bi bi-geo-alt me-2"></i><span data-i18n="btn_find_booth">Find Polling Booth</span></button>
             </div>
         </div>
     </div>
@@ -297,7 +297,7 @@
         <div class="cta-content">
             <h3 data-i18n="auto_key_40">Still have questions?</h3>
             <p data-i18n="auto_key_41">Our AI assistant can explain any election term or process in plain language — in your own language!</p>
-            <button class="btn-hero-primary" onclick="navigate('chat')"><i class="bi bi-chat-dots-fill me-2"></i>Chat with AI Now</button>
+            <button class="btn-hero-primary" onclick="navigate('chat')"><i class="bi bi-chat-dots-fill me-2"></i><span data-i18n="btn_ask_ai">Chat with AI Now</span></button>
         </div>
     </div>
 
@@ -602,15 +602,15 @@
                     <h3 data-i18n="auto_key_79">You ARE Eligible to Vote!</h3>
                     <p data-i18n="auto_key_81">Congratulations! You meet all the legal requirements to vote in Indian elections. Make sure you're registered on the Electoral Roll.</p>
                     <div class="result-actions">
-                        <a href="https://voters.eci.gov.in" target="_blank" class="btn-hero-primary" style="text-decoration:none;display:inline-block" data-i18n="auto_key_2">📋 Register to Vote</a>
-                        <button class="btn-hero-secondary" onclick="wizardReset()" data-i18n="auto_key_3">↩ Start Over</button>
+                        <a href="https://voters.eci.gov.in" target="_blank" class="btn-hero-primary" style="text-decoration:none;display:inline-block" data-i18n="auto_key_2"><span data-i18n="btn_ask_ai">📋 Register to Vote</span></a>
+                        <button class="btn-hero-secondary" onclick="wizardReset()" data-i18n="auto_key_3"><span data-i18n="btn_find_booth">↩ Start Over</span></button>
                     </div>
                 </div>
                 <div id="result-not-eligible" class="wizard-result not-eligible d-none">
                     <div class="result-icon">❌</div>
                     <h3 data-i18n="auto_key_80">You Are Not Currently Eligible</h3>
                     <p id="result-reason" class="text-muted"></p>
-                    <button class="btn-hero-secondary" onclick="wizardReset()" data-i18n="auto_key_4">↩ Try Again</button>
+                    <button class="btn-hero-secondary" onclick="wizardReset()" data-i18n="auto_key_4"><span data-i18n="btn_find_booth">↩ Try Again</span></button>
                 </div>
             </div>
         </div>
