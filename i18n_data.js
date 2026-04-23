@@ -84,7 +84,19 @@ const translations = {
     "auto_key_82": "CivicBot",
     "auto_key_83": "Your EPIC card is required to vote at a polling booth.",
     "auto_key_84": "Make sure your name appears on the electoral roll. Verify it on the official ECI portal before election day.",
-    "auto_key_85": "Getting your Voter ID is quick and free. Follow these steps:"
+    "auto_key_85": "Getting your Voter ID is quick and free. Follow these steps:",
+    "nav_info": "Info",
+    "nav_askai": "Ask AI",
+    "nav_eligible": "Eligible?",
+    "nav_timeline": "Timeline",
+    "nav_locator": "Locator",
+    "nav_results": "Results",
+    "nav_glossary": "Glossary",
+    "hero_title": "Your Vote. Your Power.",
+    "chat_placeholder": "Ask about elections, voting, or registration...",
+    "vid_title": "Do you have a Voter ID?",
+    "vid_yes": "Yes, I have it",
+    "vid_no": "No, I don't"
   },
   "Hindi": {
     "auto_key_1": "भारत का निःशुल्क AI-संचालित चुनाव शिक्षा मंच। अपने अधिकारों को समझें, प्रक्रिया सीखें और सोच-समझकर चुनाव करें।",
@@ -171,7 +183,19 @@ const translations = {
     "auto_key_82": "सिविकबॉट",
     "auto_key_83": "मतदान केंद्र पर मतदान करने के लिए आपका ईपीआईसी कार्ड आवश्यक है।",
     "auto_key_84": "सुनिश्चित करें कि आपका नाम मतदाता सूची में दिखाई दे। चुनाव के दिन से पहले इसे आधिकारिक ईसीआई पोर्टल पर सत्यापित करें।",
-    "auto_key_85": "अपना वोटर आईडी प्राप्त करना त्वरित और निःशुल्क है। इन चरणों का पालन करें:"
+    "auto_key_85": "अपना वोटर आईडी प्राप्त करना त्वरित और निःशुल्क है। इन चरणों का पालन करें:",
+    "nav_info": "जानकारी",
+    "nav_askai": "AI से पूछें",
+    "nav_eligible": "पात्र?",
+    "nav_timeline": "समयरेखा",
+    "nav_locator": "बूथ खोजें",
+    "nav_results": "परिणाम",
+    "nav_glossary": "शब्दकोश",
+    "hero_title": "आपका वोट। आपकी शक्ति।",
+    "chat_placeholder": "चुनाव, मतदान, या पंजीकरण के बारे में पूछें...",
+    "vid_title": "क्या आपके पास मतदाता पहचान पत्र है?",
+    "vid_yes": "हाँ, मेरे पास है",
+    "vid_no": "नहीं, मेरे पास नहीं है"
   },
   "Bengali": {
     "auto_key_1": "ভারতের বিনামূল্যে এআই-চালিত নির্বাচনী শিক্ষার প্ল্যাটফর্ম। আপনার অধিকারগুলি বুঝুন, প্রক্রিয়াটি শিখুন এবং একটি অবগত পছন্দ করুন৷",
@@ -258,7 +282,19 @@ const translations = {
     "auto_key_82": "CivicBot",
     "auto_key_83": "একটি পোলিং বুথে ভোট দেওয়ার জন্য আপনার EPIC কার্ড প্রয়োজন৷",
     "auto_key_84": "আপনার নাম ভোটার তালিকায় আছে তা নিশ্চিত করুন। নির্বাচনের দিন আগে অফিসিয়াল ECI পোর্টালে এটি যাচাই করুন।",
-    "auto_key_85": "আপনার ভোটার আইডি পাওয়া দ্রুত এবং বিনামূল্যে। এই পদক্ষেপগুলি অনুসরণ করুন:"
+    "auto_key_85": "আপনার ভোটার আইডি পাওয়া দ্রুত এবং বিনামূল্যে। এই পদক্ষেপগুলি অনুসরণ করুন:",
+    "nav_info": "তথ্য",
+    "nav_askai": "AI জিজ্ঞাসা",
+    "nav_eligible": "যোগ্য?",
+    "nav_timeline": "সময়রেখা",
+    "nav_locator": "বুথ খুঁজুন",
+    "nav_results": "ফলাফল",
+    "nav_glossary": "শব্দকোষ",
+    "hero_title": "আপনার ভোট। আপনার শক্তি।",
+    "chat_placeholder": "নির্বাচন, ভোট, বা নিবন্ধন সম্পর্কে জিজ্ঞাসা করুন...",
+    "vid_title": "আপনার কি ভোটার আইডি আছে?",
+    "vid_yes": "হ্যাঁ, আছে",
+    "vid_no": "না, নেই"
   },
   "Tamil": {
     "auto_key_1": "இந்தியாவின் இலவச AI-இயங்கும் தேர்தல் கல்வி தளம். உங்கள் உரிமைகளைப் புரிந்து கொள்ளுங்கள், செயல்முறையைக் கற்றுக் கொள்ளுங்கள் மற்றும் தகவலறிந்த தேர்வு செய்யுங்கள்.",
@@ -345,7 +381,19 @@ const translations = {
     "auto_key_82": "CivicBot || வாக்குச் சாவடியில் வாக்களிக்க உங்கள் EPIC அட்டை அவசியம்.",
     "auto_key_83": "உங்கள் பெயர் வாக்காளர் பட்டியலில் இடம் பெற்றுள்ளதை உறுதி செய்து கொள்ளவும். தேர்தல் நாளுக்கு முன் அதிகாரப்பூர்வ ECI போர்ட்டலில் சரிபார்க்கவும்.",
     "auto_key_84": "உங்கள் வாக்காளர் ஐடியைப் பெறுவது விரைவானது மற்றும் இலவசம். இந்த வழிமுறைகளைப் பின்பற்றவும்:",
-    "auto_key_85": "Getting your Voter ID is quick and free. Follow these steps:"
+    "auto_key_85": "Getting your Voter ID is quick and free. Follow these steps:",
+    "nav_info": "தகவல்",
+    "nav_askai": "AI கேளுங்கள்",
+    "nav_eligible": "தகுதியா?",
+    "nav_timeline": "காலவரிசை",
+    "nav_locator": "சாவடி கண்டறி",
+    "nav_results": "முடிவுகள்",
+    "nav_glossary": "சொற்களஞ்சியம்",
+    "hero_title": "உங்கள் வோட்டு. உங்கள் சக்தி.",
+    "chat_placeholder": "தேர்தல், வாக்களிப்பு பற்றி கேளுங்கள்...",
+    "vid_title": "உங்களிடம் வாக்காளர் அட்டை உள்ளதா?",
+    "vid_yes": "ஆம், உள்ளது",
+    "vid_no": "இல்லை"
   },
   "Telugu": {
     "auto_key_1": "భారతదేశం యొక్క ఉచిత AI-ఆధారిత ఎన్నికల విద్యా వేదిక. మీ హక్కులను అర్థం చేసుకోండి, ప్రక్రియను నేర్చుకోండి మరియు సమాచారం ఎంపిక చేసుకోండి.",
@@ -432,7 +480,19 @@ const translations = {
     "auto_key_82": "CivicBot || పోలింగ్ బూత్‌లో ఓటు వేయడానికి మీ EPIC కార్డ్ అవసరం.",
     "auto_key_83": "ఓటర్ల జాబితాలో మీ పేరు ఉండేలా చూసుకోండి. ఎన్నికల రోజుకు ముందు అధికారిక ECI పోర్టల్‌లో దీన్ని ధృవీకరించండి.",
     "auto_key_84": "మీ ఓటరు IDని పొందడం త్వరగా మరియు ఉచితం. ఈ దశలను అనుసరించండి:",
-    "auto_key_85": "Getting your Voter ID is quick and free. Follow these steps:"
+    "auto_key_85": "Getting your Voter ID is quick and free. Follow these steps:",
+    "nav_info": "సమాచారం",
+    "nav_askai": "AI అడగండి",
+    "nav_eligible": "అర్హత?",
+    "nav_timeline": "కాలరేఖ",
+    "nav_locator": "బూత్ కనుగొనండి",
+    "nav_results": "ఫలితాలు",
+    "nav_glossary": "నిఘంటువు",
+    "hero_title": "మీ ఓటు. మీ శక్తి.",
+    "chat_placeholder": "ఎన్నికలు, ఓటింగ్ గురించి అడగండి...",
+    "vid_title": "మీకు ఓటర్ ID ఉందా?",
+    "vid_yes": "అవును, ఉంది",
+    "vid_no": "లేదు"
   },
   "Marathi": {
     "auto_key_1": "भारताचे विनामूल्य एआय-सक्षम निवडणूक शिक्षण मंच. तुमचे अधिकार समजून घ्या, प्रक्रिया जाणून घ्या आणि माहितीपूर्ण निवड करा.",
@@ -519,6 +579,18 @@ const translations = {
     "auto_key_82": "CivicBot",
     "auto_key_83": "Your EPIC card is required to vote at a polling booth.",
     "auto_key_84": "Make sure your name appears on the electoral roll. Verify it on the official ECI portal before election day.",
-    "auto_key_85": "Getting your Voter ID is quick and free. Follow these steps:"
+    "auto_key_85": "Getting your Voter ID is quick and free. Follow these steps:",
+    "nav_info": "माहिती",
+    "nav_askai": "AI विचारा",
+    "nav_eligible": "पात्र?",
+    "nav_timeline": "कालरेषा",
+    "nav_locator": "बूथ शोधा",
+    "nav_results": "निकाल",
+    "nav_glossary": "शब्दकोश",
+    "hero_title": "तुमचा मत. तुमची शक्ती.",
+    "chat_placeholder": "निवडणूक, मतदान याबद्दल विचारा...",
+    "vid_title": "तुमच्याकडे मतदार ओळखपत्र आहे का?",
+    "vid_yes": "होय, आहे",
+    "vid_no": "नाही"
   }
 };

@@ -701,14 +701,14 @@ function applyLanguage(lang) {
         }
     });
 
-    // Special cases that don't easily fit into textContent
+    // Chat placeholder
     const inp = document.getElementById('user-input');
-    if (inp && t['auto_key_1']) inp.placeholder = "Ask about elections, voting, or registration..."; // Fallback
+    if (inp && t.chat_placeholder) inp.placeholder = t.chat_placeholder;
 
     // Voter ID Title with formatting
     const vt = document.querySelector('.vid-title');
-    if (vt) {
-        vt.innerHTML = (t['auto_key_2'] || "Do you have a Voter ID?").replace('Voter ID', '<span class="text-neon">Voter ID</span>');
+    if (vt && t.vid_title) {
+        vt.innerHTML = t.vid_title.replace('Voter ID', '<span class="text-neon">Voter ID?</span>');
     }
 }
 
